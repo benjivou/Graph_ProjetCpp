@@ -23,7 +23,16 @@ CSommet::CSommet(unsigned int uiNumero)
 
 }
 
+CSommet::CSommet(CSommet & SOMParam)
+{
+}
+
 
 CSommet::~CSommet()
 {
+}
+
+CSommet & CSommet::operator=(CSommet & SOMParam)
+{
+	// TODO: insérer une instruction return ici
 }

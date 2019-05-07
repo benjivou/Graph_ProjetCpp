@@ -3,16 +3,22 @@
 #include "CSommet.h"
 class CGraphe
 {
-
 private :
+	/*Attributs*/
+
 	CSommet ppSOMListeSommets;
 	unsigned int uiNombreDeSommets;
 	unsigned int uiNombreDArc;
 
 public:
+
+	/*Constructeurs et destructeurs*/
+
 	CGraphe();
 	CGraphe(CGraphe &GRPParam);
 	~CGraphe();
+
+	/*Méthodes*/
 
 	void GRAAfficher_Graphe();
 

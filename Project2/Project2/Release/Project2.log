@@ -1,5 +1,6 @@
-﻿  CArc.cpp
-  CGraphe.cpp
+﻿  CGraphe.cpp
+  CSommet.cpp
+  main.cpp
   Génération de code en cours
   0 of 11 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
