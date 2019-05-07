@@ -1,6 +1,6 @@
 #ifndef CSOMMET_H
 #define CSOMMET_H
-
+#include "CArc.h"
 #define UITAILLEDEFAULT 3
 
 class CSommet
@@ -29,7 +29,7 @@ public:
 	void SOMModifier_Numero(unsigned int uiNumero) { uiSOMNumero = uiNumero; } //inline
 
 	CArc ** SOMLire_ArcPartant() { return ppARCPartant; } //inline
-	CArc ** SOMLire_ArcPartant() { return ppARCArrivant; } //inline
+	CArc ** SOMLire_ArcArrivant() { return ppARCArrivant; } //inline
 	
 };
 

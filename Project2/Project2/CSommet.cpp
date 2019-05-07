@@ -5,7 +5,7 @@
 
 CSommet::CSommet()
 {
-	;
+	
 }
 
 CSommet::CSommet(unsigned int uiNumero)
