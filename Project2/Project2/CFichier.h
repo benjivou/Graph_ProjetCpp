@@ -8,37 +8,50 @@
 #include <stdlib.h>
 #include <string.h>
 #include "CException.h"
+#include "CStockageElement.h" // contenaire pour stocker les données du graphe
+
 #ifndef CFICHIER_H
 #define CFICHIER_H
 
 
 #define MAX_LONGUEUR_LINE 80
-
 #define MAX_TAILLE_ARG 20		// nombre de caractère dans 1 argument du fichier
-/* Initialisation des balises à trouver dans le fichier */
-#define NB_BALISE 4
-#define TAILLE_BALISE_TYPE 1O
-#define TAILLE_BALISE_NBLIGNES 10
-#define TAILLE_BALISE_NBCOLONNES 8
-#define TAILLE_BALISE_MATRICE 10
+/* Initialisation des balises à trouver dans le fichier  */
+/*Balise de Paramétrage*/
+#define NB_BALISE 6
 
-const char pcBaliseNbLignes[TAILLE_BALISE_NBLIGNES] = "NBSommets=";
-const char pcBaliseNbColonnes[TAILLE_BALISE_NBCOLONNES] = "NBArcs=";
-const char pcBaliseSommets[TAILLE_BALISE_MATRICE] = "Sommets=[";
-const char pcBaliseArcs[TAILLE_BALISE_TYPE] = "Arcs=";
+
+const char pcBaliseNbLignes[] = "NBSommets=";
+const char pcBaliseNbColonnes[] = "NBArcs=";
+const char pcBaliseSommets[] = "Sommets=[";
+const char pcBaliseArcs[] = "Arcs=[";
+
+// Balises de Sommets 
+const char pcBaliseSommetNumero[] = "Numero=";
+
+// Balises d'Arc
+const char pcBaliseArcDebut[] = "Debut=";
+const char pcBaliseArcFin[] = "Fin=";
 // regroupement
-const int iLongueurBal[NB_BALISE] = { TAILLE_BALISE_TYPE,TAILLE_BALISE_NBLIGNES,TAILLE_BALISE_NBCOLONNES,TAILLE_BALISE_MATRICE };
-const char *ppcTestBalise[NB_BALISE] = { pcBaliseType,pcBaliseNbLignes,pcBaliseNbColonnes,pcBaliseMatrice };
+
+const char *ppcTestBaliseParametrique[NB_BALISE] = { pcBaliseNbLignes,pcBaliseNbColonnes,pcBaliseSommets,pcBaliseSommetNumero,pcBaliseArcs,pcBaliseArcDebut};	// info de Ligne
+const char *ppcTestBaliseSommet[] = { pcBaliseSommetNumero };						// info à récupérer pour une ligne de Sommet
+const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info à récupérer pour une ligne d'Arc
+
+
 /* Message d'erreur */
 #define CHEMIN_INVALID 11
 #define BALISE_INVALID 12
 #define TYPE_TROP_LONG 13
 #define MAUVAIS_TYPE_MATRICE 14
-#define TAILLE_MATRICE_INVALID 15
+#define GRAPH_VIDE 15
 #define NOT_A_NUMBER 16
 #define NOT_A_REEL 17
 #define MATRICE_MAL_DECLARE 18
 #define MATRICE_INITIALISATION_RATE 19
+#define CROCHET_MAL_PLACE 20
+#define DECLARATION_LIGNE_COLONNE_INVALID 21
+#define DECLARATION_DOUBLE_SOMMET 22
 
 
 class CFichier
@@ -49,10 +62,10 @@ public:
 	~CFichier();
 
 	// Getter
-	double **FICLire_MTMppdrice() { return ppdStockage; };// inline
-	int FICLire_NbLigne() { return ppdStockage->MTPLire_NbLigne(); } //inline
-	int FICLire_NbColonne() { return ppdStockage->MTPLire_NbColonne(); } //inline
-	char* FICLire_Type() { return pcType; }; // inline
+	CStockageElement **FICLire_ppSTOFICStockage() { return ppSTOFICStockage; };// inline
+	unsigned int FICLire_NBSommet() { return uiNBSommet; }; // inline
+	unsigned int FICLire_NBArc() { return uiNBArc; }; // inline
+
 
 	// Afficheur
 	void FICAffiche_Contenu_Fich();	// affiche le contenu de la matrice
@@ -61,17 +74,17 @@ public:
 	
 private:
 	
-	double **ppdStockage;
-	unsigned int uiNbColonne;
-	char pcType[MAX_TAILLE_ARG];
+	CStockageElement ** ppSTOFICStockage;
+	unsigned int uiNBSommet;
+	unsigned int uiNBArc;
 
 	unsigned int FICLongueur_De_Chaine(const char *);
 	void FICEst_Un_Entier(const char* pcValeur);
-	void FICEst_Un_Reel(const char* pcValeur);	// si la chaine n'est pas un nombre throw erreur
 	char* FICTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);
 	int FICDemarre_Avec(const char* cPrefix, const char* cMot, int iLongueurPrefix);
 	int FICCopie_String(char *pcSrc, char* pcDest);
-	int FICStocke_Ligne_Dans_Matrice(char* pcLigne, double **pmStockage, unsigned int uiCurrentLigne);
+	int* FICRecup_Ligne_Argument(char* pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise);
+	int FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement);
 };
 #include "CFichier.cpp"
 #endif // !CFICHIER_H

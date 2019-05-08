@@ -6,8 +6,7 @@
  */
 CFichier::CFichier()
 {
-	ppdStockage = nullptr;
-	*pcType = '\0';
+	throw(new CException(BALISE_INVALID));
 }
 
 
@@ -16,11 +15,16 @@ CFichier::CFichier()
  */
 CFichier::~CFichier()
 {
-	// s'il y a une CMatrice allouée dynamiquement
-	if (*pcType != '\0')
+	if (ppSTOFICStockage != nullptr)
 	{
-		delete ppdStockage;
+		// desallouer tous les sommets 
+		for (unsigned int  uiPosition = 0; uiPosition < uiNBSommet; uiPosition++)
+		{
+			delete(ppSTOFICStockage[uiPosition]);
+		}
 	}
+	
+	
 }
 
 /**
@@ -38,11 +42,12 @@ CFichier::CFichier(const char * cAdresse)
 	
 	unsigned int uiLigne = 0;		// donne la ligne du fichier en cours d'étude
 	char pcLine[MAX_LONGUEUR_LINE];	// ligne d'argument pour créer la matrice
+	int* piListeSommet;				// stock les sommets déja vus
 
-	/* Variable nécessaire à la création de matrice*/
+	/* Variable nécessaire à la création de la liste*/
 	char pcArgType[MAX_TAILLE_ARG];
-	unsigned int uiColonne;
-	unsigned int uiLigneM;
+	unsigned int uiNBArc;
+	unsigned int uiNBSommet;
 
 	/* Step1 : Ouverture du flux */
 	FILE *pfFile;
@@ -58,20 +63,22 @@ CFichier::CFichier(const char * cAdresse)
 	{
 		/* Step2 : Initialisation */
 		// Récupération des colonnes / lignes  / types
-		while (uiLigne < 7 && fgets(pcLine, MAX_LONGUEUR_LINE, pfFile) != NULL)
+		while (uiLigne < NB_BALISE && fgets(pcLine, MAX_LONGUEUR_LINE, pfFile) != NULL)
 		{
 			/* test qui determine qui permet de passer à la ligne suivante si on a un ']' *////////////////////////
-			///////////////////////
-			///////////////
-			//////////
-			if (FICDemarre_Avec(ppcTestBalise[uiLigne], pcLine, MAX_LONGUEUR_LINE) == ']')
+			if (FICDemarre_Avec("]", pcLine, MAX_LONGUEUR_LINE) == ']')
 			{
-				uiLigne == (4 || 6) ? continue : throw ( new CException(CROCHET_MAL_PLACE));
+				uiLigne++;
+
+				// 4 : c'est la fin des sommets, 6 :Fin des Arcs
+				if (uiLigne == 4 || uiLigne == 6) continue;
+				// Erreur
+				else throw (new CException(CROCHET_MAL_PLACE));
 			}
 			/* test de la balise */
 
 			// balise invalide
-			if (FICDemarre_Avec(ppcTestBalise[uiLigne], pcLine, MAX_LONGUEUR_LINE) == 0  )
+			if (FICDemarre_Avec(ppcTestBaliseParametrique[uiLigne], pcLine, MAX_LONGUEUR_LINE) == 0  )
 			{
 				fclose(pfFile);
 				CException EXCBalise_Invalid(BALISE_INVALID);
@@ -80,124 +87,92 @@ CFichier::CFichier(const char * cAdresse)
 			/* Les balises sont bonnes */
 			else
 			{
-				iPos = FICLongueur_De_Chaine(ppcTestBalise[uiLigne]);	// positionne le pointeur pour récupéré la valeur
-				iPos--;		// repositionnement du ^pointeur sur le début de la value
+				
 				switch (uiLigne)
 				{
-				case 0 :
-					FICEst_Un_Entier(pcLine + iPos);	// teste de la value
-					uiLigneM = atoi((pcLine + iPos));
-					if (uiLigneM == 0)
+				case 0: // balise Sommet
+					unsigned int * puiBuffer  = (unsigned int*) *(FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne , 1));	// recupération
+					uiNBSommet = puiBuffer[0]; // stockage
+					free(puiBuffer);	//vidange
+
+					if (uiNBSommet == 0)
 					{
-						throw(new CException(TAILLE_MATRICE_INVALID));
+						throw(new CException(GRAPH_VIDE));
 					}
 					// Generation des Lignes
-					ppdStockage = malloc(sizeof(double *) * uiLigneM);
-					if( ppdStockage == nullptr )
-						throw(new CException(MATRICE_INITIALISATION_RATE));
-					break;
-				case 1 :
-					FICEst_Un_Entier(pcLine + iPos);	// teste de la value
+					ppSTOFICStockage = (CStockageElement **) malloc(sizeof(void *) * uiNBSommet);
 
-					uiColonne = atoi((pcLine + iPos));
-					if (uiColonne == 0)
-					{
-						throw(new CException(TAILLE_MATRICE_INVALID));
-					}
-					// Generation des Colonnes
-					for (unsigned int uiPos = 0; uiPos < uiColonne; uiColonne++)
-					{
-						ppdStockage[uiPos] = (double *)calloc(sizeof(double *) * uiColonne);
-						if (ppdStockage[uiPos] == nullptr)
-							throw(new CException(MATRICE_INITIALISATION_RATE));
-					}
+					if (ppSTOFICStockage == nullptr) throw(new CException(MATRICE_INITIALISATION_RATE));
+					
+					piListeSommet = (int *) malloc(sizeof(int) * uiNBSommet);
+					if (piListeSommet == nullptr) throw(new CException(MATRICE_INITIALISATION_RATE));
+
+					uiLigne++; // Deplacement du pointeur
+					break;
+				case 1: // Balise Colonne
+					
+					unsigned int * puiBuffer = (unsigned int*) (FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne, 1));	// recupération
+					uiNBArc = puiBuffer[0]; // stockage
+					free(puiBuffer);	//vidange
+
+					uiLigne++;
 					break;
 
-				case 3 :	// Balise Numero qui peut se répété
-					FICEst_Un_Reel(pcLine + iPos);
-					unsigned int uiPositionMatrice = uiLigne - 3; // Donne la Ligne cible de la matrice 
-					if(uiPositionMatrice >= )
+				case 2: // Balise SOMMET[
+					uiLigne++;
+					break;
+
+				case 3:	// Balise Numero qui peut se répété
+					
+					/* Etape 1 :Recupération de la Ligne cible dans la matrice de stockage */
+					unsigned int uiPositionMatrice = uiLigne - 3; // Donne la Ligne cible de la matrice ppdStockage
+
+					// Erreur : Ligne non déclarée
+					if (uiPositionMatrice >= uiNBSommet) throw(new CException(DECLARATION_LIGNE_COLONNE_INVALID));
+					
+
+					/* Etape 2 : Recuperation de la valeur et stockage sur la première ligne*/
+					int * piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 1);	// recupération
+					int iSommet = piBuffer[0]; // stockage
+					free(puiBuffer);	//vidange
+					
+					/* Etape 3 : Teste de l'existance de ce sommet*/
+					FICSommet_Existe_T_Il(iSommet, piListeSommet, uiPositionMatrice) == 0 ?
+						piListeSommet[uiPositionMatrice] = iSommet : 
+						throw(new CException(DECLARATION_DOUBLE_SOMMET));
+
+					/* Etape 3 : Stockage */
+					ppSTOFICStockage[uiPositionMatrice] = new CStockageElement(iSommet);
+					break;
+
+				case 4: // Balise ARC[
+					uiLigne++;
+					break;
+
+				case 5: // Ligne de Sommet à stocker
+					/* Etape 1 :Recupération de la Ligne cible dans la matrice de stockage */
+					unsigned int uiPositionMatrice = uiLigne - 5; // Donne la Ligne cible de la matrice ppdStockage
+
+					// Erreur : Ligne non déclarée
+					if (uiPositionMatrice >= uiNBArc) throw(new CException(DECLARATION_LIGNE_COLONNE_INVALID));
+					
+					/* Etape 2 : Recuperation de la valeur et stockage sur la première ligne*/
+					int * piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 1);	// recupération
+					/* TO-DO*/
+					
+					
+					
+					free(puiBuffer);	//vidange
+
+					break;
 				default:
 					break;
 				}
-				/* balise NBSommet, NBArcs*/
-				if (uiLigne < 2)
-				{
-					FICEst_Un_Entier(pcLine + iPos);	// teste de la value
-					
-					uiLigne == 0 ?
-						uiLigneM = atoi((pcLine + iPos)) :
-						uiColonne = atoi((pcLine + iPos));
 
-				}
-				/* balise restantes*/
-				else
-				{
-					if()
-					
-					/* balise NBLigne, NBColonne*/
-					if (uiLigne == 1)					// Balise NBLigne
-					{
-						
-						FICEst_Un_Entier(pcLine + iPos);
-						
-						
-						
-						
-					}
-					else
-					{
-						if (uiLigne == 2)					// Balise NBColonne
-						{
-							FICEst_Un_Entier(pcLine + iPos);
-							
-							uiColonne = atoi((pcLine + iPos));
-						}
-						if (uiLigneM <= 0 || uiColonne <= 0)
-						{
-							fclose(pfFile);
-							throw(new CException(TAILLE_MATRICE_INVALID));
-						}
-					}
-					
-				}
-				uiLigne++;
 			}
+				
 		}
-
-		// Création de l'objet CMatrice
-		if (FICDemarre_Avec("double", pcArgType, MAX_TAILLE_ARG) == 1)
-		{
-			
-			FICCopie_String((char*)"double",pcType);				// Sauvegarde du type 
-
-			uiPosLigne = 0;
-
-			ppdStockage = new double(uiLigneM, uiColonne);
-			/* Step3 : Remplissage */
-			// recupération de la ligne
-			try {
-				while (uiPosLigne < uiLigneM && fgets(pcLine, MAX_LONGUEUR_LINE, pfFile) != NULL)
-				{
-					// Remplissage Ligne à Ligne
-					FICStocke_Ligne_Dans_Matrice(pcLine, ppdStockage, uiPosLigne);
-					uiPosLigne++;
-				}
-			}
-			catch(CException EXCErreur)
-			{
-				fclose(pfFile);
-				std::cerr << " Fichier \n Ligne "<< NB_BALISE + uiPosLigne << " : ";
-				throw(EXCErreur);
-			}
-		}
-		// Si erreur : mauvais type
-		else
-		{
-			fclose(pfFile);
-			CException EXCTypeDifferentDeDouble(MAUVAIS_TYPE_MATRICE);
-			throw EXCTypeDifferentDeDouble;
-		}
+		
 	}
 
 	fclose(pfFile);
@@ -209,7 +184,7 @@ CFichier::CFichier(const char * cAdresse)
  */
 void CFichier::FICAffiche_Contenu_Fich()
 {
-	printf(" \nSon type est : %s \n", pcType);
+	printf(" AIe \n");
 	
 }
 
@@ -244,32 +219,7 @@ void CFichier::FICEst_Un_Entier(const char * pcValeur)
 	}
 }
 
-/*
- *\brief si la chaine n'st pas un nombre throw erreur
- *\param[in] pcValeur a analyser
- */
-void CFichier::FICEst_Un_Reel(const char * pcValeur)
-{
-	unsigned int uiPos =0;
-	unsigned int uiNbDeVirgules = 0;
-	unsigned int uiNbDeSignes = 0;
-	while (pcValeur[uiPos] == '.' || (pcValeur[uiPos] <= '9' && pcValeur[uiPos] >= '0') || pcValeur[uiPos] == '+' || pcValeur[uiPos] == '-')
-	{
-		if (pcValeur[uiPos] == '+' || pcValeur[uiPos] == '-')
-		{
-			uiNbDeSignes++;
-		}
-		if (pcValeur[uiPos] == '.')
-		{
-			uiNbDeVirgules++;
-		}
-		uiPos++;
-	}
-	if (pcValeur[uiPos] != '\0' ||uiNbDeSignes > 1 || uiNbDeVirgules > 1)
-	{
-		throw(new CException(NOT_A_REEL));
-	}
-}
+
 	
 	
 
@@ -354,39 +304,74 @@ int CFichier::FICCopie_String(char * pcSrc, char * pcDest)
 }
 
 /**
- *\brief rempli la matrice du CFichier avec une ligne d'élément
- *\param[in] pcLigne Ligne de départ
- *\param[in] pmStockage	Matrice à remplir 
- *\param[in] uiCurrentLigne	Donne la ligne à remplir
- *\param[out] 1 si c'est bon 0 sinon
- *\warning pcLigne est deplacer sur la dernière valeur, ne pas utiliser avec des listes alloué dynamiquement, car pc Ligne est modifié
+ *\brief rempli la matrice du cfichier avec une ligne d'élément
+ *\param[in] pcligne ligne de départ
+ *\param[in] ppcBaliseATrouver tableuax des matrices à trouver sur la ligne
+ *\param[in] uiNBdeBalise Nombre de balises à trouver
+ *\param[out] piResultat est le tableau des valeurs recherchées
+ *\warning pcligne est deplacer sur la dernière valeur, ne pas utiliser avec des listes alloué dynamiquement, car pc ligne est modifié
  */
-
-int CFichier::FICStocke_Ligne_Dans_Matrice(char* pcLigne, double** ppdStockage, unsigned int uiCurrentLigne)
+int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise)
 {
-	unsigned int uiCurrentColonne = 0;
-	char *pcCurrent;					// pointeur sur la derniere occurence du ' '
-	pcCurrent = FICTrouve_Premiere_Occurrence(pcLigne, ' ');
-
-	/* L'idée c'est de retrouver le prochaine espace, le remplacer par un caractère de fin de chaine. 
-		Ensuite on déplace la position de pcLigne*/
-	while (pcCurrent != nullptr && uiCurrentColonne != (pmStockage->MTPLire_NbColonne() - 1))
+	/*
+	 *Etape 0 : Initialisation du buffer de sortie
+	 */
+	int * piResultat = (int*)malloc(sizeof(int) * uiNBdeBalise);
+	// Erreur : Allocation
+	if (piResultat == nullptr)
 	{
-		*pcCurrent = '\0';
-		FICEst_Un_Reel((const char *) pcLigne);
-		ppdStockage->MTPModifier_Element(uiCurrentLigne, uiCurrentColonne, atof(pcLigne));	// remplissage de la matrice
-		pcLigne = pcCurrent + 1;															// déplacement le pointeur
-		pcCurrent = FICTrouve_Premiere_Occurrence(pcLigne, ' ');							// Recherche de la prochaine valeur
-		uiCurrentColonne++;
+		throw(new CException(ERREUR_REALLOC));
 	}
 
-	if (uiCurrentColonne < (pmStockage->MTPLire_NbColonne() - 1))
+	/*
+	 *Etape 1 : Recupération
+	 */
+	char * pcCurseur;	// il sert à fermer la chaine pour réaliser le atoi
+	unsigned int  uiNumBalise = 0;
+	try
 	{
-		throw(CException(MATRICE_MAL_DECLARE));
-	}
-	// la dernière occurrence est volontairement différente, car il n'y a pas à repositionner pcCurrent après
-	ppdStockage->MTPModifier_Element(uiCurrentLigne, uiCurrentColonne, atof(pcLigne));	// dernier élément
+		while (uiNumBalise < uiNBdeBalise)
+		{
+			/* Phase 1 : fermeture de chaine */
+			pcCurseur = FICTrouve_Premiere_Occurrence(pcLigne, ','); // positionnement 
+			if (pcCurseur != nullptr) *pcCurseur = '\0';				// fermeture si besoin
 
-	return 0;
+			/* phase 2 : positionner le pointeur sur l'élément à convertir */
+			pcLigne = FICTrouve_Premiere_Occurrence(pcLigne, '=') + 1;
+
+			/* phase 3 : recup et stockage */
+			FICEst_Un_Entier(pcLigne);
+
+			piResultat[uiNBdeBalise] = atoi(pcLigne);
+
+			/* phase 4 : repositionnement de pcLigne*/
+			pcLigne = pcCurseur + 1;
+
+			uiNumBalise++;
+		}
+	}
+	catch (CException EXCErreur)
+	{
+		free(piResultat);
+		throw(EXCErreur);
+	}
+	
+
+	return piResultat;
+}
+
+/*
+ *\brief son objectif c'est de trouver si iElement est dans les uiNBElement de piListe
+ *
+ */
+int CFichier::FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement ) {
+	unsigned int uiPosition = 0;
+	int iRes = 0;
+
+	while (uiPosition < uiNBElement && iRes == 0 )
+	{
+		piListe[uiPosition] == iElement ? iRes = 1 : uiPosition ++;
+	}
+	return iRes;
 }
 

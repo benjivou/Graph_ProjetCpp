@@ -120,6 +120,7 @@
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CGraphe.h" />
     <ClInclude Include="CSommet.h" />
+    <ClInclude Include="CStockageElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
@@ -127,10 +128,15 @@
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CGraphe.cpp" />
     <ClCompile Include="CSommet.cpp" />
+    <ClCompile Include="CStockageElement.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Fichier_Arc_Manquant.txt" />
+    <Text Include="Fichier_NBSommet_Negatif.txt" />
     <Text Include="Fichier_Valide.txt" />
+    <Text Include="Fichier_coordonne_Doublés.txt" />
+    <Text Include="Fichier_Ligne_Vides.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

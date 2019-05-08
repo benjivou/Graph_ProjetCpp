@@ -1,5 +1,28 @@
 ﻿  CFichier.cpp
-e:\bureau\projet\project2\project2\cfichier.h(5): fatal error C1083: Impossible d'ouvrir le fichier include : 'CMatrice.h' : No such file or directory
+e:\bureau\projet\project2\project2\cfichier.cpp(80): error C2065: 'ppcTestBalise' : identificateur non déclaré
+e:\bureau\projet\project2\project2\cfichier.cpp(89): error C2065: 'ppcTestBalise' : identificateur non déclaré
+e:\bureau\projet\project2\project2\cfichier.cpp(175): error C2065: 'pcType' : identificateur non déclaré
+e:\bureau\projet\project2\project2\cfichier.cpp(8): error C2084: la fonction 'CFichier::CFichier(void)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(7): note: voir la définition précédente de '{ctor}'
+e:\bureau\projet\project2\project2\cfichier.cpp(17): error C2084: la fonction 'CFichier::~CFichier(void)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(16): note: voir la définition précédente de '{dtor}'
+e:\bureau\projet\project2\project2\cfichier.cpp(37): error C2084: la fonction 'CFichier::CFichier(const char *)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(36): note: voir la définition précédente de '{ctor}'
+e:\bureau\projet\project2\project2\cfichier.cpp(80): error C2065: 'ppcTestBalise' : identificateur non déclaré
+e:\bureau\projet\project2\project2\cfichier.cpp(89): error C2065: 'ppcTestBalise' : identificateur non déclaré
+e:\bureau\projet\project2\project2\cfichier.cpp(174): error C2084: la fonction 'void CFichier::FICAffiche_Contenu_Fich(void)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(173): note: voir la définition précédente de 'FICAffiche_Contenu_Fich'
+e:\bureau\projet\project2\project2\cfichier.cpp(175): error C2065: 'pcType' : identificateur non déclaré
+e:\bureau\projet\project2\project2\cfichier.cpp(183): error C2084: la fonction 'unsigned int CFichier::FICLongueur_De_Chaine(const char *)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(182): note: voir la définition précédente de 'FICLongueur_De_Chaine'
+e:\bureau\projet\project2\project2\cfichier.cpp(194): error C2084: la fonction 'void CFichier::FICEst_Un_Entier(const char *)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(193): note: voir la définition précédente de 'FICEst_Un_Entier'
+e:\bureau\projet\project2\project2\cfichier.cpp(221): error C2084: la fonction 'char *CFichier::FICTrouve_Premiere_Occurrence(char *,char)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(220): note: voir la définition précédente de 'FICTrouve_Premiere_Occurrence'
+e:\bureau\projet\project2\project2\cfichier.cpp(243): error C2084: la fonction 'int CFichier::FICDemarre_Avec(const char *,const char *,int)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(242): note: voir la définition précédente de 'FICDemarre_Avec'
+e:\bureau\projet\project2\project2\cfichier.cpp(278): error C2084: la fonction 'int CFichier::FICCopie_String(char *,char *)' a déjà un corps
+  e:\bureau\projet\project2\project2\cfichier.cpp(277): note: voir la définition précédente de 'FICCopie_String'
   CSommet.cpp
 e:\bureau\projet\project2\project2\csommet.h(13): error C2143: erreur de syntaxe : absence de ';' avant '*'
 e:\bureau\projet\project2\project2\csommet.h(13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
