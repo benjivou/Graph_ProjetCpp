@@ -11,8 +11,8 @@ private :
 	//Attributs
 
 	unsigned int uiSOMNumero;
-	CArc **ppARCPartant;
-	CArc **ppARCArrivant;
+	CArc **ppARCSOMPartant;
+	CArc **ppARCSOMArrivant;
 	unsigned int uiSOMTailleArrivant;
 	unsigned int uiSOMTaillePartant;
 
@@ -30,8 +30,8 @@ public:
 	unsigned int SOMLire_Numero() { return uiSOMNumero ; } //inline
 	void SOMModifier_Numero(unsigned int uiNumero) { uiSOMNumero = uiNumero; } //inline
 
-	CArc ** SOMLire_ArcPartant() { return ppARCPartant; } //inline
-	CArc ** SOMLire_ArcArrivant() { return ppARCArrivant; } //inline
+	CArc ** SOMLire_ArcPartant() { return ppARCSOMPartant; } //inline
+	CArc ** SOMLire_ArcArrivant() { return ppARCSOMArrivant; } //inline
 	unsigned int Lire_TailleArrivant() { return uiSOMTailleArrivant; } //inline
 	unsigned int Lire_TaillePartant() { return uiSOMTaillePartant; } //inline
 
