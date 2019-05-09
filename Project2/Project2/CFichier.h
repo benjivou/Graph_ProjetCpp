@@ -52,7 +52,7 @@ const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info
 #define CROCHET_MAL_PLACE 20
 #define DECLARATION_LIGNE_COLONNE_INVALID 21
 #define DECLARATION_DOUBLE_SOMMET 22
-
+#define DECLARATION_SOMMET_NEXISTE_PAS 23
 
 class CFichier
 {
@@ -63,8 +63,8 @@ public:
 
 	// Getter
 	CStockageElement **FICLire_ppSTOFICStockage() { return ppSTOFICStockage; };// inline
-	unsigned int FICLire_NBSommet() { return uiNBSommet; }; // inline
-	unsigned int FICLire_NBArc() { return uiNBArc; }; // inline
+	unsigned int FICLire_NBSommet() { return uiFICNBSommet; }; // inline
+	unsigned int FICLire_NBArc() { return uiFICNBArc; }; // inline
 
 
 	// Afficheur
@@ -75,8 +75,8 @@ public:
 private:
 	
 	CStockageElement ** ppSTOFICStockage;
-	unsigned int uiNBSommet;
-	unsigned int uiNBArc;
+	unsigned int uiFICNBSommet;
+	unsigned int uiFICNBArc;
 
 	unsigned int FICLongueur_De_Chaine(const char *);
 	void FICEst_Un_Entier(const char* pcValeur);

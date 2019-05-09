@@ -18,14 +18,16 @@ CFichier::~CFichier()
 	if (ppSTOFICStockage != nullptr)
 	{
 		// desallouer tous les sommets 
-		for (unsigned int  uiPosition = 0; uiPosition < uiNBSommet; uiPosition++)
+		for (unsigned int  uiPosition = 0; uiPosition < uiFICNBSommet; uiPosition++)
 		{
 			delete(ppSTOFICStockage[uiPosition]);
 		}
 	}
-	
+	uiFICNBArc = 0;
+	uiFICNBSommet = 0;
 	
 }
+
 
 /**
  *\brief On lui passe en paramètre un chemin d'accés à un fichier, génére une matrice avec les informations du fichier
@@ -39,16 +41,22 @@ CFichier::CFichier(const char * cAdresse)
 	printf("%s \n", cAdresse);
 	unsigned int uiPosLigne;
 	int iPos;						// position dns la ligne
+
 	
+
 	unsigned int uiLigne = 0;		// donne la ligne du fichier en cours d'étude
 	char pcLine[MAX_LONGUEUR_LINE];	// ligne d'argument pour créer la matrice
 	int* piListeSommet;				// stock les sommets déja vus
 
 	/* Variable nécessaire à la création de la liste*/
-	char pcArgType[MAX_TAILLE_ARG];
-	unsigned int uiNBArc;
-	unsigned int uiNBSommet;
 
+	char pcArgType[MAX_TAILLE_ARG];
+	unsigned int uiNBArc;			// stocke le nombre d'arc à générer
+	unsigned int uiNBSommet;		// stocke le nombre de sommet à générer
+	unsigned int * puiBuffer;		// stocke la liste des argument de la ligne 
+	unsigned int uiBufferPosition;  // stocke la position de la position à remplir suivant les cas
+	int * piBuffer;					// stocke le resultat de le buffer des arg de la ligne
+	int iBufSommet;					// stocke la valeur du sommet temporairement 
 	/* Step1 : Ouverture du flux */
 	FILE *pfFile;
 	fopen_s(&pfFile, cAdresse, "r");
@@ -72,7 +80,6 @@ CFichier::CFichier(const char * cAdresse)
 
 				// 4 : c'est la fin des sommets, 6 :Fin des Arcs
 				if (uiLigne == 4 || uiLigne == 6) continue;
-				// Erreur
 				else throw (new CException(CROCHET_MAL_PLACE));
 			}
 			/* test de la balise */
@@ -91,7 +98,7 @@ CFichier::CFichier(const char * cAdresse)
 				switch (uiLigne)
 				{
 				case 0: // balise Sommet
-					unsigned int * puiBuffer  = (unsigned int*) *(FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne , 1));	// recupération
+					puiBuffer  = (unsigned int*) *(FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne , 1));	// recupération
 					uiNBSommet = puiBuffer[0]; // stockage
 					free(puiBuffer);	//vidange
 
@@ -111,7 +118,7 @@ CFichier::CFichier(const char * cAdresse)
 					break;
 				case 1: // Balise Colonne
 					
-					unsigned int * puiBuffer = (unsigned int*) (FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne, 1));	// recupération
+					puiBuffer = (unsigned int*) (FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne, 1));	// recupération
 					uiNBArc = puiBuffer[0]; // stockage
 					free(puiBuffer);	//vidange
 
@@ -125,24 +132,25 @@ CFichier::CFichier(const char * cAdresse)
 				case 3:	// Balise Numero qui peut se répété
 					
 					/* Etape 1 :Recupération de la Ligne cible dans la matrice de stockage */
-					unsigned int uiPositionMatrice = uiLigne - 3; // Donne la Ligne cible de la matrice ppdStockage
+					uiBufferPosition = uiLigne - 3; // Donne la Ligne cible de la matrice ppdStockage
 
 					// Erreur : Ligne non déclarée
-					if (uiPositionMatrice >= uiNBSommet) throw(new CException(DECLARATION_LIGNE_COLONNE_INVALID));
+					if (uiBufferPosition >= uiNBSommet) throw(new CException(DECLARATION_LIGNE_COLONNE_INVALID));
 					
 
 					/* Etape 2 : Recuperation de la valeur et stockage sur la première ligne*/
-					int * piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 1);	// recupération
-					int iSommet = piBuffer[0]; // stockage
+					piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 1);	// recupération
+					iBufSommet = piBuffer[0]; // stockage
 					free(puiBuffer);	//vidange
 					
 					/* Etape 3 : Teste de l'existance de ce sommet*/
-					FICSommet_Existe_T_Il(iSommet, piListeSommet, uiPositionMatrice) == 0 ?
-						piListeSommet[uiPositionMatrice] = iSommet : 
+					FICSommet_Existe_T_Il(iBufSommet, piListeSommet, uiBufferPosition) == -1?
+						piListeSommet[uiBufferPosition] = iBufSommet : 
 						throw(new CException(DECLARATION_DOUBLE_SOMMET));
 
 					/* Etape 3 : Stockage */
-					ppSTOFICStockage[uiPositionMatrice] = new CStockageElement(iSommet);
+					ppSTOFICStockage[uiBufferPosition] = new CStockageElement(iBufSommet);
+					uiFICNBSommet++;
 					break;
 
 				case 4: // Balise ARC[
@@ -150,20 +158,30 @@ CFichier::CFichier(const char * cAdresse)
 					break;
 
 				case 5: // Ligne de Sommet à stocker
+					unsigned int uiPositionDepart;  
+
 					/* Etape 1 :Recupération de la Ligne cible dans la matrice de stockage */
-					unsigned int uiPositionMatrice = uiLigne - 5; // Donne la Ligne cible de la matrice ppdStockage
+					uiBufferPosition = uiLigne - 5; // Donne la Ligne cible de la matrice ppdStockage
 
 					// Erreur : Ligne non déclarée
-					if (uiPositionMatrice >= uiNBArc) throw(new CException(DECLARATION_LIGNE_COLONNE_INVALID));
+					if (uiBufferPosition >= uiNBArc) throw(new CException(DECLARATION_LIGNE_COLONNE_INVALID));
 					
 					/* Etape 2 : Recuperation de la valeur et stockage sur la première ligne*/
-					int * piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 1);	// recupération
-					/* TO-DO*/
+					piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 2);	// recupération
 					
-					
-					
-					free(puiBuffer);	//vidange
+					int iBuffer = FICSommet_Existe_T_Il(piBuffer[0], piListeSommet, uiBufferPosition);
+					int iSommetFin = piBuffer[1];
 
+					free(piBuffer);		// vidange 
+
+					/* Etape 3 : Teste de l'existance des sommets*/
+					iBuffer != -1 && FICSommet_Existe_T_Il(piBuffer[1], piListeSommet, uiBufferPosition) != -1 ?
+						uiPositionDepart = (unsigned int) iBuffer:
+						throw(new CException(DECLARATION_SOMMET_NEXISTE_PAS));
+
+					/* Etape 4 : Stockage */
+					ppSTOFICStockage[uiPositionDepart]->STOAjouter_Arc(iBufSommet);
+					uiFICNBArc++;
 					break;
 				default:
 					break;
@@ -362,15 +380,15 @@ int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseA
 
 /*
  *\brief son objectif c'est de trouver si iElement est dans les uiNBElement de piListe
- *
+ * -1 n'est^pas la  sinon return la position
  */
 int CFichier::FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement ) {
 	unsigned int uiPosition = 0;
-	int iRes = 0;
+	int iRes = -1;
 
-	while (uiPosition < uiNBElement && iRes == 0 )
+	while (uiPosition < uiNBElement && iRes == -1 )
 	{
-		piListe[uiPosition] == iElement ? iRes = 1 : uiPosition ++;
+		piListe[uiPosition] == iElement ? iRes = (int) uiPosition : uiPosition ++;
 	}
 	return iRes;
 }
