@@ -11,7 +11,7 @@ CStockageElement::CStockageElement(int iSommetCible)
 {
 	iSommet = iSommetCible;
 	uiNBArcSortant = 0;
-	piArcSortant == nullptr;
+	piArcSortant = nullptr;
 }
 
 
@@ -64,4 +64,16 @@ void CStockageElement::STOExiste_T_Il(int iElement)
 			throw(new CException(CETTE_ELEMENT_EXISTE_DEJA));
 		}
 	}
+}
+
+void CStockageElement::STOAfficher_Stockage()
+{
+	cout << "Le Sommet : " << iSommet << " est la source de :";
+	for (unsigned int  uiPosition = 0; uiPosition < uiNBArcSortant; uiPosition++)
+	{
+		cout << piArcSortant[uiPosition];
+		if (uiPosition < uiNBArcSortant - 1) cout << ", ";
+
+	}
+	cout << "." << endl;
 }

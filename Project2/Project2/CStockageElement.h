@@ -1,5 +1,8 @@
 #include"CException.h"
 #include <stdlib.h>
+#include <iostream>
+#include <stdio.h>
+
 /*
  *\brief L'objectif est d'avoir une boite d'éléments permettant de créer un sommet et ses arcs sortants
  * utiliser cette classe permet de garder une évolutivité pour le code du 3ème projet
@@ -7,7 +10,7 @@
 
 #ifndef CSTOCK
 #define CSTOCK
-
+using namespace std;
 
 /* Message d'Erreur*/
 #define CETTE_ELEMENT_EXISTE_DEJA 30
@@ -31,5 +34,6 @@ public:
 	void STOAjouter_Arc(int iSommetCible);
 	void STOExiste_T_Il(int iElement);	// permet de savoir si la cible de l'arc existe
 
+	void STOAfficher_Stockage();
 };
 #endif // !CSTOCK

@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
+
 #include "CException.h"
 #include "CStockageElement.h" // contenaire pour stocker les données du graphe
 
@@ -46,7 +46,7 @@ const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info
 #define MAUVAIS_TYPE_MATRICE 14
 #define GRAPH_VIDE 15
 #define NOT_A_NUMBER 16
-#define NOT_A_REEL 17
+#define NOT_A_VALID_DIMENSION 17
 #define MATRICE_MAL_DECLARE 18
 #define MATRICE_INITIALISATION_RATE 19
 #define CROCHET_MAL_PLACE 20

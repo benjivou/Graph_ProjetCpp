@@ -2,27 +2,39 @@
 // Ex�cuter le programme : Ctrl+F5 ou menu D�boguer > Ex�cuter sans d�bogage
 // D�boguer le programme : F5 ou menu D�boguer > D�marrer le d�bogage
 
-#include "CSommet.h"
+#include "CFichier.h"
 
 #include <iostream>
 #include <stdio.h>
 
 using namespace std;
 
+const char * pcFicherValide = "Fichier_Valide.txt";
+const char * pcFicherInvalide1 = "Fichier_NBSommet_Negatif.txt";
+const char * pcFicherInvalide2 = "Fichier_Ligne_Vides.txt";
+const char * pcFicherInvalide3 = "Fichier_coordonne_Doublés.txt";
+const char * pcFicherInvalide4 = "Fichier_Arc_Manquant.txt";
 
+const char  *ppcFichierTest[] = {pcFicherValide,pcFicherInvalide1 , pcFicherInvalide2 , pcFicherInvalide3 ,pcFicherInvalide4 };
 int main()
 {
 	cout << "Hello World !" << endl;
+	for (size_t i = 0; i < 5; i++)
+	{
+		try
+		{
+			CFichier *buffer = new CFichier(ppcFichierTest[i]);
+			buffer->FICAffiche_Contenu_Fich();
+			delete(buffer);
 
-
-
-	/*try {
+		}
+		catch (CException EXCe)
+		{
+			EXCe.EXCAfficherErreur();
+		}
 		
-
 	}
-	catch (CException EXCException) {
-		EXCException.EXCAfficherErreur();
-	}*/
+	
 	getchar();
 	return 0;
 }
