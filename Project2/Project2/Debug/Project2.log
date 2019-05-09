@@ -1,2 +1,29 @@
-﻿  main.cpp
-  Project2.vcxproj -> C:\Users\damie\source\repos\Project2\Debug\Project2.exe
+﻿  CSommet.cpp
+e:\bureau\projet\project2\project2\csommet.h(13): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(13): error C2238: jetons inattendus avant ';'
+e:\bureau\projet\project2\project2\csommet.h(14): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(14): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(14): error C2238: jetons inattendus avant ';'
+e:\bureau\projet\project2\project2\csommet.h(31): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(31): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(31): error C2334: jetons inattendus avant '{' ; corps apparent de la fonction ignoré
+e:\bureau\projet\project2\project2\csommet.h(32): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(32): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(32): error C2334: jetons inattendus avant '{' ; corps apparent de la fonction ignoré
+e:\bureau\projet\project2\project2\csommet.cpp(17): error C2065: 'ppARCArrivant' : identificateur non déclaré
+e:\bureau\projet\project2\project2\csommet.cpp(18): error C2065: 'ppARCPartant' : identificateur non déclaré
+  main.cpp
+e:\bureau\projet\project2\project2\csommet.h(13): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(13): error C2238: jetons inattendus avant ';'
+e:\bureau\projet\project2\project2\csommet.h(14): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(14): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(14): error C2238: jetons inattendus avant ';'
+e:\bureau\projet\project2\project2\csommet.h(31): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(31): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(31): error C2334: jetons inattendus avant '{' ; corps apparent de la fonction ignoré
+e:\bureau\projet\project2\project2\csommet.h(32): error C2143: erreur de syntaxe : absence de ';' avant '*'
+e:\bureau\projet\project2\project2\csommet.h(32): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+e:\bureau\projet\project2\project2\csommet.h(32): error C2334: jetons inattendus avant '{' ; corps apparent de la fonction ignoré
+  Génération de code en cours...

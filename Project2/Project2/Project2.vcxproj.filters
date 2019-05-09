@@ -27,6 +27,12 @@
     <ClInclude Include="CGraphe.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="CFichier.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CStockageElement.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CSommet.cpp">
@@ -44,5 +50,25 @@
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="CStockageElement.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Fichier_Valide.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="Fichier_NBSommet_Negatif.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="Fichier_coordonne_Doublés.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="Fichier_Arc_Manquant.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="Fichier_Ligne_Vides.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
   </ItemGroup>
 </Project>
