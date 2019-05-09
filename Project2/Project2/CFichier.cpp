@@ -39,8 +39,8 @@ CFichier::CFichier(const char * cAdresse)
 {
 	
 	printf("%s \n", cAdresse);
-	unsigned int uiPosLigne;
-	int iPos;						// position dns la ligne
+	
+
 
 	
 
@@ -50,13 +50,16 @@ CFichier::CFichier(const char * cAdresse)
 
 	/* Variable nécessaire à la création de la liste*/
 
-	char pcArgType[MAX_TAILLE_ARG];
+
 	unsigned int uiNBArc;			// stocke le nombre d'arc à générer
 	unsigned int uiNBSommet;		// stocke le nombre de sommet à générer
 	unsigned int * puiBuffer;		// stocke la liste des argument de la ligne 
 	unsigned int uiBufferPosition;  // stocke la position de la position à remplir suivant les cas
 	int * piBuffer;					// stocke le resultat de le buffer des arg de la ligne
 	int iBufSommet;					// stocke la valeur du sommet temporairement 
+	unsigned int uiPositionDepart;	// stocke la position de depart dans l'arc
+	int iSommet;					// stocke la nom du sommet de depart d'un arc
+	int iBuffer;					// stocke la postion du sommet dans la liste pc
 	/* Step1 : Ouverture du flux */
 	FILE *pfFile;
 	fopen_s(&pfFile, cAdresse, "r");
@@ -158,7 +161,7 @@ CFichier::CFichier(const char * cAdresse)
 					break;
 
 				case 5: // Ligne de Sommet à stocker
-					unsigned int uiPositionDepart;  
+					
 
 					/* Etape 1 :Recupération de la Ligne cible dans la matrice de stockage */
 					uiBufferPosition = uiLigne - 5; // Donne la Ligne cible de la matrice ppdStockage
@@ -169,8 +172,8 @@ CFichier::CFichier(const char * cAdresse)
 					/* Etape 2 : Recuperation de la valeur et stockage sur la première ligne*/
 					piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 2);	// recupération
 					
-					int iBuffer = FICSommet_Existe_T_Il(piBuffer[0], piListeSommet, uiBufferPosition);
-					int iSommetFin = piBuffer[1];
+					iBuffer = FICSommet_Existe_T_Il(piBuffer[0], piListeSommet, uiBufferPosition);
+					iSommet = piBuffer[1];
 
 					free(piBuffer);		// vidange 
 

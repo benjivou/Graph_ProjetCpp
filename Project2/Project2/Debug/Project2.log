@@ -1,66 +1,4 @@
-﻿  CArc.cpp
-  CException.cpp
-  CFichier.cpp
-e:\bureau\projet\project2\project2\cfichier.cpp(169): error C2374: 'piBuffer' : redéfinition ; initialisation multiple
-  e:\bureau\projet\project2\project2\cfichier.cpp(141): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(155): error C2360: l'initialisation de 'iSommet' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(142): note: voir la déclaration de 'iSommet'
-e:\bureau\projet\project2\project2\cfichier.cpp(155): error C2360: l'initialisation de 'piBuffer' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(141): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(159): error C2360: l'initialisation de 'iSommet' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(142): note: voir la déclaration de 'iSommet'
-e:\bureau\projet\project2\project2\cfichier.cpp(159): error C2360: l'initialisation de 'piBuffer' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(141): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'iSommetFin' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(172): note: voir la déclaration de 'iSommetFin'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'iBuffer' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(171): note: voir la déclaration de 'iBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'piBuffer' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(169): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'iSommet' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(142): note: voir la déclaration de 'iSommet'
-e:\bureau\projet\project2\project2\cfichier.cpp(8): error C2084: la fonction 'CFichier::CFichier(void)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(7): note: voir la définition précédente de '{ctor}'
-e:\bureau\projet\project2\project2\cfichier.cpp(17): error C2084: la fonction 'CFichier::~CFichier(void)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(16): note: voir la définition précédente de '{dtor}'
-e:\bureau\projet\project2\project2\cfichier.cpp(39): error C2084: la fonction 'CFichier::CFichier(const char *)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(38): note: voir la définition précédente de '{ctor}'
-e:\bureau\projet\project2\project2\cfichier.cpp(169): error C2374: 'piBuffer' : redéfinition ; initialisation multiple
-  e:\bureau\projet\project2\project2\cfichier.cpp(141): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(155): error C2360: l'initialisation de 'iSommet' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(142): note: voir la déclaration de 'iSommet'
-e:\bureau\projet\project2\project2\cfichier.cpp(155): error C2360: l'initialisation de 'piBuffer' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(141): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(159): error C2360: l'initialisation de 'iSommet' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(142): note: voir la déclaration de 'iSommet'
-e:\bureau\projet\project2\project2\cfichier.cpp(159): error C2360: l'initialisation de 'piBuffer' est ignorée par l'étiquette 'case'
-  e:\bureau\projet\project2\project2\cfichier.cpp(141): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'iSommetFin' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(172): note: voir la déclaration de 'iSommetFin'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'iBuffer' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(171): note: voir la déclaration de 'iBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'piBuffer' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(169): note: voir la déclaration de 'piBuffer'
-e:\bureau\projet\project2\project2\cfichier.cpp(185): error C2361: l'initialisation de 'iSommet' est ignorée par l'étiquette 'default'
-  e:\bureau\projet\project2\project2\cfichier.cpp(142): note: voir la déclaration de 'iSommet'
-e:\bureau\projet\project2\project2\cfichier.cpp(203): error C2084: la fonction 'void CFichier::FICAffiche_Contenu_Fich(void)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(202): note: voir la définition précédente de 'FICAffiche_Contenu_Fich'
-e:\bureau\projet\project2\project2\cfichier.cpp(212): error C2084: la fonction 'unsigned int CFichier::FICLongueur_De_Chaine(const char *)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(211): note: voir la définition précédente de 'FICLongueur_De_Chaine'
-e:\bureau\projet\project2\project2\cfichier.cpp(223): error C2084: la fonction 'void CFichier::FICEst_Un_Entier(const char *)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(222): note: voir la définition précédente de 'FICEst_Un_Entier'
-e:\bureau\projet\project2\project2\cfichier.cpp(250): error C2084: la fonction 'char *CFichier::FICTrouve_Premiere_Occurrence(char *,char)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(249): note: voir la définition précédente de 'FICTrouve_Premiere_Occurrence'
-e:\bureau\projet\project2\project2\cfichier.cpp(272): error C2084: la fonction 'int CFichier::FICDemarre_Avec(const char *,const char *,int)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(271): note: voir la définition précédente de 'FICDemarre_Avec'
-e:\bureau\projet\project2\project2\cfichier.cpp(307): error C2084: la fonction 'int CFichier::FICCopie_String(char *,char *)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(306): note: voir la définition précédente de 'FICCopie_String'
-e:\bureau\projet\project2\project2\cfichier.cpp(332): error C2084: la fonction 'int *CFichier::FICRecup_Ligne_Argument(char *,const char **,unsigned int)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(331): note: voir la définition précédente de 'FICRecup_Ligne_Argument'
-e:\bureau\projet\project2\project2\cfichier.cpp(384): error C2084: la fonction 'int CFichier::FICSommet_Existe_T_Il(int,int *,unsigned int)' a déjà un corps
-  e:\bureau\projet\project2\project2\cfichier.cpp(384): note: voir la définition précédente de 'FICSommet_Existe_T_Il'
-  CGraphe.cpp
-  CSommet.cpp
+﻿  CSommet.cpp
 e:\bureau\projet\project2\project2\csommet.h(13): error C2143: erreur de syntaxe : absence de ';' avant '*'
 e:\bureau\projet\project2\project2\csommet.h(13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
 e:\bureau\projet\project2\project2\csommet.h(13): error C2238: jetons inattendus avant ';'
@@ -75,8 +13,6 @@ e:\bureau\projet\project2\project2\csommet.h(32): error C4430: spécificateur de
 e:\bureau\projet\project2\project2\csommet.h(32): error C2334: jetons inattendus avant '{' ; corps apparent de la fonction ignoré
 e:\bureau\projet\project2\project2\csommet.cpp(17): error C2065: 'ppARCArrivant' : identificateur non déclaré
 e:\bureau\projet\project2\project2\csommet.cpp(18): error C2065: 'ppARCPartant' : identificateur non déclaré
-  CStockageElement.cpp
-e:\bureau\projet\project2\project2\cstockageelement.cpp(14): warning C4553: '==' : résultat de l'expression non utilisé ; souhaitiez-vous utiliser '=' ?
   main.cpp
 e:\bureau\projet\project2\project2\csommet.h(13): error C2143: erreur de syntaxe : absence de ';' avant '*'
 e:\bureau\projet\project2\project2\csommet.h(13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
