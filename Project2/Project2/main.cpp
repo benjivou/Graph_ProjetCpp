@@ -21,7 +21,7 @@ int main()
 	CSommet *sommet2 = new CSommet(2);
 	CSommet *sommet3 = new CSommet(3);
 	CSommet *sommet4 = new CSommet(*sommet3);
-	sommet1 = sommet3;
+	*sommet1 = *sommet3;
 
 
 

@@ -25,7 +25,7 @@ public:
 
 	unsigned int ARCLire_Destination() { return uiARCDestination; } //inline
 	void ARCModifier_Destination(unsigned int uiDestination) { uiARCDestination = uiDestination; } //inline
-	void ARCSupprimer_Arc(unsigned int uiSource, unsigned int uiDestination);
+	
 };
 
 #endif //CARC_H

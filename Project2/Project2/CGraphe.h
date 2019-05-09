@@ -6,9 +6,9 @@ class CGraphe
 private :
 	/*Attributs*/
 
-	CSommet ppSOMListeSommets;
-	unsigned int uiNombreDeSommets;
-	unsigned int uiNombreDArc;
+	CSommet **ppSOMGRAListeSommets;
+	unsigned int uiGRANombreDeSommets;
+	unsigned int uiGRANombreDArc;
 
 public:
 
@@ -23,8 +23,8 @@ public:
 	void GRAAfficher_Graphe();
 
 	void GRAAjouter_Sommet(unsigned int uiValeur);
-	void GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur);
-	void GRASupprimer_Sommet(unsigned int uiValeur);
+	void GRAModifier_Sommet(CSommet sommet, unsigned int uiNouvelleValeur);
+	void GRASupprimer_Sommet(CSommet sommet);
 	unsigned int GRAPresence_Sommet(unsigned int uiValeur);
 
 	void GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee);
@@ -32,8 +32,8 @@ public:
 	void GRASupprimer_Arc(unsigned int uiDepart, unsigned int uiArrivee);
 	unsigned int GRAPresence_Arc(unsigned int uiDepart, unsigned int uiArrivee);
 
-	unsigned int GRALire_NbSommet() {return uiNombreDeSommets;} //inline
-	unsigned int GRALire_NbArc() { return uiNombreDArc;} //inline
+	unsigned int GRALire_NbSommet() {return uiGRANombreDeSommets;} //inline
+	unsigned int GRALire_NbArc() { return uiGRANombreDArc;} //inline
 };
 
 #endif //CGRAPHE_H

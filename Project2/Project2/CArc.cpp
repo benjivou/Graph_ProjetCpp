@@ -15,8 +15,7 @@ CArc::CArc(unsigned int uiDestination)
 
 CArc::~CArc()
 {
+	//Ne fais rien
 }
 
-void CArc::ARCSupprimer_Arc(unsigned int uiSource, unsigned int uiDestination)
-{
-}
+

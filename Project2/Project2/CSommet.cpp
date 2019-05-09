@@ -6,14 +6,14 @@
 CSommet::CSommet()
 {
 	uiSOMNumero = 0;
-	uiSOMTailleArrivant = 3;
-	uiSOMTaillePartant = 3;
+	uiSOMTailleArrivant = 0;
+	uiSOMTaillePartant = 0;
 
 	ppARCSOMArrivant = (CArc **)(malloc(sizeof(CArc *)));
 	ppARCSOMPartant = (CArc **)(malloc(sizeof(CArc *)));
 
-	ppARCSOMArrivant[0] = (CArc*)malloc(sizeof(CArc)*UITAILLEDEFAULT);
-	ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*UITAILLEDEFAULT);
+	ppARCSOMArrivant[0] = (CArc*)malloc(sizeof(CArc)*(UITAILLEDEFAULT + 1));
+	ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*(UITAILLEDEFAULT + 1));
 	
 }
 
@@ -26,8 +26,8 @@ CSommet::CSommet(unsigned int uiNumero)
 	ppARCSOMArrivant = (CArc **)(malloc(sizeof(CArc *)));
 	ppARCSOMPartant = (CArc **)(malloc(sizeof(CArc *)));
 
-	ppARCSOMArrivant[0] =(CArc*) malloc(sizeof(CArc)* uiSOMTailleArrivant);
-	ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*uiSOMTaillePartant);
+	ppARCSOMArrivant[0] =(CArc*) malloc(sizeof(CArc)* (uiSOMTailleArrivant+1));
+	ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*(uiSOMTaillePartant+1));
 
 }
 
@@ -40,7 +40,7 @@ CSommet::CSommet(CSommet & SOMParam)
 	if (SOMParam.ppARCSOMArrivant != nullptr)
 	{
 		ppARCSOMArrivant = (CArc **)(malloc(sizeof(CArc *)));
-		ppARCSOMArrivant[0] = (CArc*)malloc(sizeof(CArc)*uiSOMTailleArrivant);
+		ppARCSOMArrivant[0] = (CArc*)malloc(sizeof(CArc)*(uiSOMTailleArrivant+1));
 
 		for (unsigned int uiBoucle = 0; uiBoucle < uiSOMTailleArrivant; uiBoucle++)
 		{
@@ -52,7 +52,7 @@ CSommet::CSommet(CSommet & SOMParam)
 	if (SOMParam.ppARCSOMPartant != nullptr)
 	{
 		ppARCSOMPartant = (CArc **)(malloc(sizeof(CArc *)));
-		ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*uiSOMTaillePartant);
+		ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*(uiSOMTaillePartant+1));
 
 		for (unsigned int uiBoucle1 = 0; uiBoucle1 < uiSOMTailleArrivant; uiBoucle1++)
 		{
@@ -85,7 +85,7 @@ CSommet & CSommet::operator=(CSommet & SOMParam)
 	if (SOMParam.ppARCSOMArrivant != nullptr)
 	{
 		ppARCSOMArrivant = (CArc **)(malloc(sizeof(CArc *)));
-		ppARCSOMArrivant[0] = (CArc*)malloc(sizeof(CArc)*uiSOMTailleArrivant);
+		ppARCSOMArrivant[0] = (CArc*)malloc(sizeof(CArc)*(uiSOMTailleArrivant+1));
 
 		for (unsigned int uiBoucle = 0; uiBoucle < uiSOMTailleArrivant; uiBoucle++)
 		{
@@ -97,7 +97,7 @@ CSommet & CSommet::operator=(CSommet & SOMParam)
 	if (SOMParam.ppARCSOMPartant != nullptr)
 	{
 		ppARCSOMPartant = (CArc **)(malloc(sizeof(CArc *)));
-		ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*uiSOMTaillePartant);
+		ppARCSOMPartant[0] = (CArc*)malloc(sizeof(CArc)*(uiSOMTaillePartant+1));
 
 		for (unsigned int uiBoucle1 = 0; uiBoucle1 < uiSOMTailleArrivant; uiBoucle1++)
 		{
