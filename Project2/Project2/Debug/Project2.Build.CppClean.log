@@ -1,12 +1,12 @@
 e:\document\github\graph_projetcpp\project2\project2\debug\vc141.pdb
 e:\document\github\graph_projetcpp\project2\project2\debug\vc141.idb
+e:\document\github\graph_projetcpp\project2\project2\debug\main.obj
 e:\document\github\graph_projetcpp\project2\project2\debug\cstockageelement.obj
-<<<<<<< HEAD
 e:\document\github\graph_projetcpp\project2\project2\debug\csommet.obj
+e:\document\github\graph_projetcpp\project2\project2\debug\cgraphe.obj
 e:\document\github\graph_projetcpp\project2\project2\debug\cexception.obj
 e:\document\github\graph_projetcpp\project2\project2\debug\carc.obj
-e:\document\github\graph_projetcpp\project2\project2\debug\main.obj
-e:\document\github\graph_projetcpp\project2\project2\debug\cgraphe.obj
+e:\document\github\graph_projetcpp\project2\project2\debug\cstring.obj
 e:\document\github\graph_projetcpp\project2\debug\project2.pdb
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\cl.command.1.tlog
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\cl.read.1.tlog
@@ -15,22 +15,6 @@ e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link-cv
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link-cvtres.write.1.tlog
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link-rc.read.1.tlog
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link-rc.write.1.tlog
-=======
-e:\document\github\graph_projetcpp\project2\project2\debug\cexception.obj
-e:\document\github\graph_projetcpp\project2\project2\debug\carc.obj
-e:\bureau\projet\debug\project2\debug\project2.exe
-e:\bureau\projet\debug\project2\debug\project2.ilk
-e:\bureau\projet\debug\project2\debug\project2.pdb
-e:\document\github\graph_projetcpp\project2\debug\project2.ilk
-e:\document\github\graph_projetcpp\project2\debug\project2.exe
-e:\document\github\graph_projetcpp\project2\debug\project2.pdb
-e:\document\github\graph_projetcpp\project2\project2\debug\cchaine.obj
-e:\document\github\graph_projetcpp\project2\project2\debug\cgraphe.obj
-e:\document\github\graph_projetcpp\project2\project2\debug\main.obj
-e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\cl.command.1.tlog
-e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\cl.read.1.tlog
-e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\cl.write.1.tlog
->>>>>>> parent of 16e47be... add CString
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link.command.1.tlog
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link.read.1.tlog
 e:\document\github\graph_projetcpp\project2\project2\debug\project2.tlog\link.write.1.tlog

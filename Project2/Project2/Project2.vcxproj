@@ -125,10 +125,10 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CException.cpp" />
-    <ClCompile Include="CGraphe.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CStockageElement.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CString.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Fichier_Arc_Manquant.txt" />
