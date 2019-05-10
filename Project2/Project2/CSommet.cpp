@@ -92,7 +92,7 @@ CSommet & CSommet::operator=(CSommet & SOMParam)
 			ppARCSOMArrivant[0][uiBoucle] = SOMParam.ppARCSOMArrivant[0][uiBoucle];
 		}
 	}
-	else { SOMParam.ppARCSOMArrivant == nullptr; }
+	else { SOMParam.ppARCSOMArrivant = nullptr; }
 
 	if (SOMParam.ppARCSOMPartant != nullptr)
 	{
