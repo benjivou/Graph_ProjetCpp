@@ -5,6 +5,7 @@ class CException
 {
 
 private:
+	/*Attributs*/
 	unsigned int uiEXCErreur;
 
 public:
