@@ -3,7 +3,8 @@
 // D�boguer le programme : F5 ou menu D�boguer > D�marrer le d�bogage
 
 #include "CFichier.h"
-
+#include "CArc.h"
+#include "CSommet.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -33,18 +34,19 @@ int main()
 		{
 			EXCe.EXCAfficherErreur();
 		}
-		// Test Arc
-		CArc *c1 = new CArc(1);
-		CArc *c2 = new CArc(2);
-
-		//Test CSommet
-		CSommet *sommet1 = new CSommet(1);
-		CSommet *sommet2 = new CSommet(2);
-		CSommet *sommet3 = new CSommet(3);
-		CSommet *sommet4 = new CSommet(*sommet3);
-		*sommet1 = *sommet3;
+		
 
 	}
+	// Test Arc
+	CArc *c1 = new CArc(1);
+	CArc *c2 = new CArc(2);
+
+	//Test CSommet
+	CSommet *sommet1 = new CSommet(1);
+	CSommet *sommet2 = new CSommet(2);
+	CSommet *sommet3 = new CSommet(3);
+	CSommet *sommet4 = new CSommet(*sommet3);
+	*sommet1 = *sommet3;
 
 	getchar();
 	return 0;

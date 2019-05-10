@@ -2,7 +2,7 @@
 #define CSOMMET_H
 #include "CArc.h"
 
-#define UITAILLEDEFAULT 0c
+#define UITAILLEDEFAULT 0
 
 class CSommet
 {

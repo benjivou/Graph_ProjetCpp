@@ -21,7 +21,7 @@ CGraphe::CGraphe(CGraphe & GRPParam)
 			ppSOMGRAListeSommets[0][uiBoucle1] = GRPParam.ppSOMGRAListeSommets[0][uiBoucle1];
 		}
 	}
-	else { GRPParam.ppSOMGRAListeSommets == nullptr; }
+	else { GRPParam.ppSOMGRAListeSommets = nullptr; }
 
 }
 

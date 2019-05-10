@@ -1,6 +1,7 @@
 #ifndef CGRAPHE_H
 #define CGRAPHE_H
 #include "CSommet.h"
+
 class CGraphe
 {
 private :

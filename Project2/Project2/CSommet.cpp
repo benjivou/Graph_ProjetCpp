@@ -47,7 +47,7 @@ CSommet::CSommet(CSommet & SOMParam)
 			ppARCSOMArrivant[0][uiBoucle] = SOMParam.ppARCSOMArrivant[0][uiBoucle];
 		}
 	}
-	else { SOMParam.ppARCSOMArrivant == nullptr; }
+	else { SOMParam.ppARCSOMArrivant = nullptr; }
 
 	if (SOMParam.ppARCSOMPartant != nullptr)
 	{
@@ -59,7 +59,7 @@ CSommet::CSommet(CSommet & SOMParam)
 			ppARCSOMPartant[0][uiBoucle1] = SOMParam.ppARCSOMPartant[0][uiBoucle1];
 		}
 	}
-	else { SOMParam.ppARCSOMPartant == nullptr; }
+	else { SOMParam.ppARCSOMPartant = nullptr; }
 	cout << "numero"<< uiSOMNumero << endl;
 	
 }
@@ -104,7 +104,7 @@ CSommet & CSommet::operator=(CSommet & SOMParam)
 			ppARCSOMPartant[0][uiBoucle1] = SOMParam.ppARCSOMPartant[0][uiBoucle1];
 		}
 	}
-	else { SOMParam.ppARCSOMPartant == nullptr; }
+	else { SOMParam.ppARCSOMPartant = nullptr; }
 
 	cout << "numero" << uiSOMNumero << endl;
 
