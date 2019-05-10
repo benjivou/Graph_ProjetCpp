@@ -1,6 +1,7 @@
 #ifndef CSOMMET_H
 #define CSOMMET_H
 #include "CArc.h"
+#include<stdlib.h>
 
 #define UITAILLEDEFAULT 0
 

@@ -6,4 +6,13 @@
   CString.cpp
   main.cpp
   Génération de code en cours...
-  Project2.vcxproj -> E:\Document\GitHub\Graph_ProjetCpp\Project2\Debug\Project2.exe
+main.obj : error LNK2005: "public: __thiscall CFichier::CFichier(char const *)" (??0CFichier@@QAE@PBD@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "public: __thiscall CFichier::CFichier(void)" (??0CFichier@@QAE@XZ) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "public: __thiscall CFichier::~CFichier(void)" (??1CFichier@@QAE@XZ) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "public: void __thiscall CFichier::FICAffiche_Contenu_Fich(void)" (?FICAffiche_Contenu_Fich@CFichier@@QAEXXZ) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: int * __thiscall CFichier::FICRecup_Ligne_Argument(char *,char const * *,unsigned int)" (?FICRecup_Ligne_Argument@CFichier@@AAEPAHPADPAPBDI@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: int __thiscall CFichier::FICSommet_Existe_T_Il(int,int *,unsigned int)" (?FICSommet_Existe_T_Il@CFichier@@AAEHHPAHI@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "char const * * ppcTestBaliseParametrique" (?ppcTestBaliseParametrique@@3PAPBDA) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "char const * * ppcTestBaliseSommet" (?ppcTestBaliseSommet@@3PAPBDA) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "char const * * ppcTestBaliseArc" (?ppcTestBaliseArc@@3PAPBDA) déjà défini(e) dans CGraphe.obj
+E:\Document\GitHub\Graph_ProjetCpp\Project2\Debug\Project2.exe : fatal error LNK1169: un ou plusieurs symboles définis à différentes reprises ont été rencontrés

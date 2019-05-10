@@ -3,16 +3,15 @@
 *	dans une matrice et garde le type dans un attribut
 */
 
+#ifndef CFICHIER_H
+#define CFICHIER_H
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "CException.h"
 #include "CStockageElement.h"	// contenaire pour stocker les données du graphe
 #include "CString.h"			// Methodes de parser et traitement diverser sur les char *
-
-#ifndef CFICHIER_H
-#define CFICHIER_H
 
 
 #define MAX_LONGUEUR_LINE 80

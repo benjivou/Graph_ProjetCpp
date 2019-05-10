@@ -1,7 +1,5 @@
 #include "CSommet.h"
-#include "CArc.h"
 
-#include<stdlib.h>
 
 CSommet::CSommet()
 {
