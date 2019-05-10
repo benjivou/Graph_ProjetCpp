@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  CArc.cpp
   CException.cpp
   CGraphe.cpp
@@ -21,3 +22,7 @@ main.obj : error LNK2005: "char const * * ppcTestBaliseParametrique" (?ppcTestBa
 main.obj : error LNK2005: "char const * * ppcTestBaliseSommet" (?ppcTestBaliseSommet@@3PAPBDA) déjà défini(e) dans CGraphe.obj
 main.obj : error LNK2005: "char const * * ppcTestBaliseArc" (?ppcTestBaliseArc@@3PAPBDA) déjà défini(e) dans CGraphe.obj
 E:\Document\GitHub\Graph_ProjetCpp\Project2\Debug\Project2.exe : fatal error LNK1169: un ou plusieurs symboles définis à différentes reprises ont été rencontrés
+=======
+﻿  main.cpp
+  Project2.vcxproj -> E:\Document\GitHub\Graph_ProjetCpp\Project2\Debug\Project2.exe
+>>>>>>> parent of 16e47be... add CString

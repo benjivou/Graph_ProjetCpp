@@ -11,8 +11,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+<<<<<<< HEAD
 #include "CStockageElement.h"	// contenaire pour stocker les données du graphe
 #include "CString.h"			// Methodes de parser et traitement diverser sur les char *
+=======
+#include "CException.h"
+#include "CStockageElement.h" // contenaire pour stocker les données du graphe
+>>>>>>> parent of 16e47be... add CString
 
 
 
