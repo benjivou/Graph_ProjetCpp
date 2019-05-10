@@ -1,80 +1,23 @@
-<<<<<<< HEAD
 ﻿  CArc.cpp
   CException.cpp
   CGraphe.cpp
-e:\document\github\graph_projetcpp\project2\project2\cfichier.h(13): error C2059: erreur de syntaxe : '<<'
-e:\document\github\graph_projetcpp\project2\project2\cexception.h(5): error C2143: erreur de syntaxe : absence de ';' avant '{'
-e:\document\github\graph_projetcpp\project2\project2\cexception.h(5): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
-e:\document\github\graph_projetcpp\project2\project2\cfichier.h(16): error C2059: erreur de syntaxe : '=='
-e:\document\github\graph_projetcpp\project2\project2\cfichier.h(42): error C2065: 'pcBaliseNbLignes' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(9): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(71): error C2065: 'CException' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(71): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'EXCChemin_Invalid'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(71): error C3861: 'EXCChemin_Invalid' : identificateur introuvable
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(72): error C2065: 'EXCChemin_Invalid' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(87): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(95): error C2065: 'CException' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(95): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'EXCBalise_Invalid'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(95): error C3861: 'EXCBalise_Invalid' : identificateur introuvable
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(96): error C2065: 'EXCBalise_Invalid' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(107): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(114): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(119): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(122): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(130): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(148): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(159): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(179): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(191): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(252): error C2065: 'CException' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(252): error C2065: 'pEXCErreur' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(252): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(253): error C2065: 'pEXCErreur' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(358): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(390): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(390): error C2310: les gestionnaires catch doivent spécifier un seul type
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(393): error C2065: 'EXCErreur' : identificateur non déclaré
   CSommet.cpp
 e:\document\github\graph_projetcpp\project2\project2\csommet.cpp(93): warning C4553: '==' : résultat de l'expression non utilisé ; souhaitiez-vous utiliser '=' ?
   CStockageElement.cpp
   main.cpp
-e:\document\github\graph_projetcpp\project2\project2\cfichier.h(13): error C2059: erreur de syntaxe : '<<'
-e:\document\github\graph_projetcpp\project2\project2\cexception.h(5): error C2143: erreur de syntaxe : absence de ';' avant '{'
-e:\document\github\graph_projetcpp\project2\project2\cexception.h(5): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
-e:\document\github\graph_projetcpp\project2\project2\cfichier.h(16): error C2059: erreur de syntaxe : '=='
-e:\document\github\graph_projetcpp\project2\project2\cfichier.h(42): error C2065: 'pcBaliseNbLignes' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(9): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(71): error C2065: 'CException' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(71): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'EXCChemin_Invalid'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(71): error C3861: 'EXCChemin_Invalid' : identificateur introuvable
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(72): error C2065: 'EXCChemin_Invalid' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(87): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(95): error C2065: 'CException' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(95): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'EXCBalise_Invalid'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(95): error C3861: 'EXCBalise_Invalid' : identificateur introuvable
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(96): error C2065: 'EXCBalise_Invalid' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(107): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(114): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(119): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(122): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(130): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(148): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(159): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(179): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(191): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(252): error C2065: 'CException' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(252): error C2065: 'pEXCErreur' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(252): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(253): error C2065: 'pEXCErreur' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(358): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(390): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(390): error C2310: les gestionnaires catch doivent spécifier un seul type
-e:\document\github\graph_projetcpp\project2\project2\cfichier.cpp(393): error C2065: 'EXCErreur' : identificateur non déclaré
-e:\document\github\graph_projetcpp\project2\project2\main.cpp(32): error C2061: erreur de syntaxe : identificateur 'CException'
-e:\document\github\graph_projetcpp\project2\project2\main.cpp(32): error C2310: les gestionnaires catch doivent spécifier un seul type
-e:\document\github\graph_projetcpp\project2\project2\main.cpp(34): error C2065: 'EXCe' : identificateur non déclaré
   Génération de code en cours...
-=======
-﻿  main.cpp
-  Project2.vcxproj -> E:\Document\GitHub\Graph_ProjetCpp\Project2\Debug\Project2.exe
->>>>>>> parent of 16e47be... add CString
+main.obj : error LNK2005: "public: __thiscall CFichier::CFichier(char const *)" (??0CFichier@@QAE@PBD@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "public: __thiscall CFichier::CFichier(void)" (??0CFichier@@QAE@XZ) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "public: __thiscall CFichier::~CFichier(void)" (??1CFichier@@QAE@XZ) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "public: void __thiscall CFichier::FICAffiche_Contenu_Fich(void)" (?FICAffiche_Contenu_Fich@CFichier@@QAEXXZ) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: int __thiscall CFichier::FICCopie_String(char *,char *)" (?FICCopie_String@CFichier@@AAEHPAD0@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: int __thiscall CFichier::FICDemarre_Avec(char const *,char const *,int)" (?FICDemarre_Avec@CFichier@@AAEHPBD0H@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: void __thiscall CFichier::FICEst_Un_Entier(char const *)" (?FICEst_Un_Entier@CFichier@@AAEXPBD@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: unsigned int __thiscall CFichier::FICLongueur_De_Chaine(char const *)" (?FICLongueur_De_Chaine@CFichier@@AAEIPBD@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: int * __thiscall CFichier::FICRecup_Ligne_Argument(char *,char const * *,unsigned int)" (?FICRecup_Ligne_Argument@CFichier@@AAEPAHPADPAPBDI@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: int __thiscall CFichier::FICSommet_Existe_T_Il(int,int *,unsigned int)" (?FICSommet_Existe_T_Il@CFichier@@AAEHHPAHI@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "private: char * __thiscall CFichier::FICTrouve_Premiere_Occurrence(char *,char)" (?FICTrouve_Premiere_Occurrence@CFichier@@AAEPADPADD@Z) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "char const * * ppcTestBaliseParametrique" (?ppcTestBaliseParametrique@@3PAPBDA) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "char const * * ppcTestBaliseSommet" (?ppcTestBaliseSommet@@3PAPBDA) déjà défini(e) dans CGraphe.obj
+main.obj : error LNK2005: "char const * * ppcTestBaliseArc" (?ppcTestBaliseArc@@3PAPBDA) déjà défini(e) dans CGraphe.obj
+E:\Document\GitHub\Graph_ProjetCpp\Project2\Debug\Project2.exe : fatal error LNK1169: un ou plusieurs symboles définis à différentes reprises ont été rencontrés
