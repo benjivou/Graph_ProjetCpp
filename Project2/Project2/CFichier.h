@@ -10,12 +10,17 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+<<<<<<< HEAD
 #include "CStockageElement.h"	// contenaire pour stocker les données du graphe
 #include "CString.h"			// Methodes de parser et traitement diverser sur les char *
+=======
+#include "CException.h"
+#include "CStockageElement.h" // contenaire pour stocker les données du graphe
+>>>>>>> parent of 16e47be... add CString
 
 
 #define MAX_LONGUEUR_LINE 80
-
+#define MAX_TAILLE_ARG 20		// nombre de caractère dans 1 argument du fichier
 /* Initialisation des balises à trouver dans le fichier  */
 /*Balise de Paramétrage*/
 #define NB_BALISE 6
@@ -45,7 +50,7 @@ const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info
 #define TYPE_TROP_LONG 13
 #define MAUVAIS_TYPE_MATRICE 14
 #define GRAPH_VIDE 15
-
+#define NOT_A_NUMBER 16
 #define NOT_A_VALID_DIMENSION 17
 #define MATRICE_MAL_DECLARE 18
 #define MATRICE_INITIALISATION_RATE 19
@@ -78,7 +83,11 @@ private:
 	unsigned int uiFICNBSommet;
 	unsigned int uiFICNBArc;
 
-	
+	unsigned int FICLongueur_De_Chaine(const char *);
+	void FICEst_Un_Entier(const char* pcValeur);
+	char* FICTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);
+	int FICDemarre_Avec(const char* cPrefix, const char* cMot, int iLongueurPrefix);
+	int FICCopie_String(char *pcSrc, char* pcDest);
 	int* FICRecup_Ligne_Argument(char* pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise);
 	int FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement);
 };
