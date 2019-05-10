@@ -21,7 +21,7 @@ CGraphe::CGraphe(CGraphe & GRPParam)
 			ppSOMGRAListeSommets[0][uiBoucle1] = GRPParam.ppSOMGRAListeSommets[0][uiBoucle1];
 		}
 	}
-	else { GRPParam.ppSOMGRAListeSommets == nullptr; }
+	else { GRPParam.ppSOMGRAListeSommets = nullptr; }
 
 }
 
@@ -43,13 +43,26 @@ void CGraphe::GRAAjouter_Sommet(unsigned int uiValeur)
 	uiGRANombreDeSommets++;
 }
 
-void CGraphe::GRAModifier_Sommet(CSommet sommet, unsigned int uiNouvelleValeur)
+void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur)
 {
-	sommet.SOMModifier_Numero(uiNouvelleValeur);
+	for (unsigned int uiBoucle; uiBoucle < uiGRANombreDeSommets; uiBoucle++)
+	{
+		if (ppSOMGRAListeSommets[0][uiBoucle].SOMLire_Numero() == uiAncienneValeur)
+			ppSOMGRAListeSommets[0][uiBoucle].SOMModifier_Numero(uiAncienneValeur);
+	}
+
+
+	//sommet.SOMModifier_Numero(uiNouvelleValeur);
 }
 
-void CGraphe::GRASupprimer_Sommet(CSommet sommet)
+void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 {
+	unsigned int uiCurseurAncienTab = 0;
+	unsigned int uiCurseurNouveauTab = 0;
+
+
+	CSommet ppSOMGRAListeSommets = (CSommet **)(malloc(sizeof(CSommet *)));
+	ppSOMGRAListeSommets[0] = (CSommet*)malloc(sizeof(CSommet)*(UITAILLEDEFAULT + 1));
 
 }
 

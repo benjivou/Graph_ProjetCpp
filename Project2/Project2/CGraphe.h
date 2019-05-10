@@ -23,8 +23,8 @@ public:
 	void GRAAfficher_Graphe();
 
 	void GRAAjouter_Sommet(unsigned int uiValeur);
-	void GRAModifier_Sommet(CSommet sommet, unsigned int uiNouvelleValeur);
-	void GRASupprimer_Sommet(CSommet sommet);
+	void GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur);
+	void GRASupprimer_Sommet(unsigned int uiValeur);
 	unsigned int GRAPresence_Sommet(unsigned int uiValeur);
 
 	void GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee);
