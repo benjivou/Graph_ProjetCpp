@@ -220,7 +220,7 @@ void CFichier::FICAffiche_Contenu_Fich()
 /**
  *\brief rempli la matrice du cfichier avec une ligne d'élément
  *\param[in] pcligne ligne de départ
- *\param[in] ppcBaliseATrouver tableuax des matrices à trouver sur la ligne
+ *\param[in] ppcBaliseATrouver tableaux des matrices à trouver sur la ligne
  *\param[in] uiNBdeBalise Nombre de balises à trouver
  *\param[out] piResultat est le tableau des valeurs recherchées
  *\warning pcligne est deplacer sur la dernière valeur, ne pas utiliser avec des listes alloué dynamiquement, car pc ligne est modifié

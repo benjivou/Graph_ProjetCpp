@@ -41,6 +41,8 @@ public:
 	void SOMAjouter_Arc_Sortant(CArc* pARC);
 	void SOMRetirer_Arc_Arrivant(unsigned int uiCible);
 	void SOMRetirer_Arc_Sortant(unsigned int uiCible);
+	void SOMModifier_Arc_Arrivant(unsigned int uiCible);
+	void SOMModifier_Arc_Sortant(unsigned int uiCible);
 
 	unsigned int SOMArrivant_Existe_T_Il(unsigned int uiCible);
 	unsigned int SOMPartant_Existe_T_Il(unsigned int uiCible);

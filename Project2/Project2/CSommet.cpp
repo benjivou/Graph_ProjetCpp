@@ -111,7 +111,7 @@ void CSommet::SOMRetirer_Arc_Arrivant(unsigned int uiCible)
 	{
 		unsigned int uiTailleNouvelleChaine = uiSOMTailleArrivant - uiNboccurrence;
 
-		if (uiTailleNouvelleChaine) // il reste des éléments à dans la chaine apres deletion
+		if (uiTailleNouvelleChaine) // il reste des éléments dans la chaine apres deletion
 		{
 
 			/* Etape 1 : allocation de la nouvelle chaine */
@@ -167,6 +167,14 @@ void CSommet::SOMRetirer_Arc_Sortant(unsigned int uiCible)
 		}
 		uiSOMTaillePartant = uiNboccurrence;
 	}
+}
+
+void CSommet::SOMModifier_Arc_Arrivant(unsigned int uiCible)
+{
+}
+
+void CSommet::SOMModifier_Arc_Sortant(unsigned int uiCible)
+{
 }
 
 unsigned int CSommet::SOMArrivant_Existe_T_Il(unsigned int uiCible)

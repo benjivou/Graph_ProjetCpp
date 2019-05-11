@@ -166,7 +166,7 @@ unsigned int CGraphe::GRAPresence_Sommet(unsigned int uiValeur)
 	return ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() == uiValeur;
 }
 
-void CGraphe::GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee)
+/*void CGraphe::GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 {
 
 }
@@ -182,4 +182,4 @@ void CGraphe::GRASupprimer_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 unsigned int CGraphe::GRAPresence_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 {
 	return 0;
-}
+}*/

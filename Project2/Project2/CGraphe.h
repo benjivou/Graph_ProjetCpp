@@ -18,26 +18,24 @@ public:
 
 	CGraphe();
 	CGraphe(CGraphe &GRPParam);
-	CGraphe(const char *);
+	CGraphe(const char *pcFichier);
 	~CGraphe();
 
 	/*Méthodes*/
-
-	void GRAAfficher_Graphe();
 
 	void GRAAjouter_Sommet(unsigned int uiValeur);
 	void GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur);
 	void GRASupprimer_Sommet(unsigned int uiAncienneValeur);
 	unsigned int GRAPresence_Sommet(unsigned int uiValeur);
 
-	void GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee);
+	/*void GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee);
 	void GRAModifier_Arc(unsigned int uiAncienDepart, unsigned int uiAncienArrivee, unsigned int uiNouveauDepart, unsigned int uiNouvelleArrivee);
 	void GRASupprimer_Arc(unsigned int uiDepart, unsigned int uiArrivee);
-	unsigned int GRAPresence_Arc(unsigned int uiDepart, unsigned int uiArrivee);
+	unsigned int GRAPresence_Arc(unsigned int uiDepart, unsigned int uiArrivee);*/
 
 	unsigned int GRALire_NbSommet() { return uiGRANombreDeSommets; } //inline
 	unsigned int GRALire_NbArc() { return uiGRANombreDArc; } //inline
-
+	void GRAAfficher_Graphe();
 };
 
 #endif //CGRAPHE_H
