@@ -101,11 +101,12 @@ CFichier::CFichier(const char * cAdresse)
 				{
 				case 0: // balise Sommet
 					piBuffer = (FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne , 1));	// recupération
-
-					if (piBuffer[0] < 0) throw(*new CException(NOT_A_VALID_DIMENSION)); // intialisation avec des valeurs negatives
-					
-					uiNBSommet = (unsigned int) piBuffer[0]; // stockage
+					iBuffer = piBuffer[0];
 					free(piBuffer);	//vidange
+					if (iBuffer < 0) throw(*new CException(NOT_A_VALID_DIMENSION)); // intialisation avec des valeurs negatives
+					
+					uiNBSommet = (unsigned int) iBuffer; // stockage
+					
 					
 					if (uiNBSommet == 0)
 					{
@@ -123,11 +124,12 @@ CFichier::CFichier(const char * cAdresse)
 					break;
 				case 1: // Balise Colonne
 					
-					piBuffer =FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne, 1);	// recupération
+					piBuffer = (FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne, 1));	// recupération
+					iBuffer = piBuffer[0];
+					free(piBuffer);	//vidange
+					if (iBuffer < 0) throw(*new CException(NOT_A_VALID_DIMENSION)); // intialisation avec des valeurs negatives
 
-					if (piBuffer[0] < 0) throw(*new CException(NOT_A_VALID_DIMENSION));
-
-					uiNBArc = (unsigned int) piBuffer[0]; // stockage
+					uiNBArc = (unsigned int) iBuffer; // stockage
 					free(piBuffer);	//vidange
 
 					uiLigne++;
