@@ -18,6 +18,9 @@ CGraphe::CGraphe(const char * pcFichier) {
 	uiGRANombreDeSommets = pFICDonnees->FICLire_NBSommet();
 	CStockageElement ** ppSTOListeDuGraph = pFICDonnees->FICLire_ppSTOFICStockage();
 
+	unsigned int *puiBufferArc;		// recupére les arcs sortants etrentrant si besoin
+	unsigned int uiBufferPosition;	// permet de remplir les arcs sortants
+
 	/* Etape 3 : Generation de sommets */
 	
 	ppSOMGRAListeSommets = (CSommet **)malloc(sizeof(void *) * uiGRANombreDeSommets); // Création d'un tableau pour stocker les CSommets
@@ -32,13 +35,23 @@ CGraphe::CGraphe(const char * pcFichier) {
 	for (unsigned int  uiPosSommet = 0; uiPosSommet < uiGRANombreDeSommets;  uiPosSommet++)
 	{
 		
-		// Si on a bien des sommets dans ce sommet
+		// Si on a bien des arcs sortant 
 		if (ppSTOListeDuGraph[uiPosSommet]->uiLire_NBCible() > 0)
 		{
+			uiBufferPosition = 0;
+			// recuperation des sommets sortants
+			puiBufferArc = ppSTOListeDuGraph[uiPosSommet]->piSTOLire_Cibles();
+
 			// On rempli le sommet avec les arcs
 			for (unsigned int uiPosArc = 0; uiPosArc < ppSTOListeDuGraph[uiPosSommet]->uiLire_NBCible(); uiPosArc++)
 			{
-				ppSOMGRAListeSommets[uiPosSommet];// TO-DO
+				ppSOMGRAListeSommets[uiPosSommet]->SOMAjouter_Arc_Sortant(new CArc(puiBufferArc[uiPosArc])); // remplissage des sommet sortants 
+
+				// On doit rechercher le sommet cible 
+				while (ppSOMGRAListeSommets[uiBufferPosition]->SOMAfficher_Sommet() != puiBufferArc[uiPosArc]) ++uiBufferPosition;
+				
+				// On rempli le sommet cible
+				ppSOMGRAListeSommets[uiBufferPosition]->SOMAjouter_Arc_Entrant(new CArc(puiBufferArc[ppSOMGRAListeSommets[uiPosSommet]->SOMLire_Numero()]));
 			}
 		}
 	}
@@ -48,25 +61,41 @@ CGraphe::CGraphe(CGraphe & GRPParam)
 {
 	if (GRPParam.ppSOMGRAListeSommets != nullptr)
 	{
-		ppSOMGRAListeSommets = (CSommet **)(malloc(sizeof(CSommet *)));
-		ppSOMGRAListeSommets[0] = (CSommet*)malloc(sizeof(CSommet)*(uiGRANombreDeSommets + 1));
-
-		for (unsigned int uiBoucle1 = 0; uiBoucle1 < uiGRANombreDeSommets+1; uiBoucle1++)
+		/* Etape 1 : Allocation de l'espace de CSommet*/
+		ppSOMGRAListeSommets = (CSommet **)(malloc(sizeof(CSommet *) * GRPParam.GRALire_NbSommet()); 
+		
+		/* Etape 2: Recopie */
+		for (unsigned int  uiPosition = 0; uiPosition < GRPParam.GRALire_NbSommet(); uiPosition++)
 		{
-			ppSOMGRAListeSommets[0][uiBoucle1] = GRPParam.ppSOMGRAListeSommets[0][uiBoucle1];
+			ppSOMGRAListeSommets[uiPosition] = new CSommet(* GRPParam.ppSOMGRAListeSommets[uiPosition]); // construction par recopie
 		}
+		/* Etape 3 : Recopie des infos de graphe*/
+		uiGRANombreDArc = GRPParam.uiGRANombreDArc;
+		uiGRANombreDeSommets = GRPParam.uiGRANombreDeSommets;
 	}
-	else { GRPParam.ppSOMGRAListeSommets = nullptr; }
+	else 
+	{ 
+		GRPParam.ppSOMGRAListeSommets = nullptr; 
+		uiGRANombreDArc = 0;
+		uiGRANombreDeSommets = 0;
+	}
 
 }
 
 CGraphe::~CGraphe()
 {
-	
+	for (unsigned int uiPos = 0; uiPos < uiGRANombreDeSommets; uiPos++)
+	{
+		delete ppSOMGRAListeSommets[uiPos];
+	}
 }
 
 void CGraphe::GRAAfficher_Graphe()
 {
+	for (unsigned int uiPos = 0; uiPos < uiGRANombreDeSommets; uiPos++)
+	{
+		ppSOMGRAListeSommets[uiPos]->SOMAfficher_Sommet() ;
+	}
 }
 
 void CGraphe::GRAAjouter_Sommet(unsigned int uiValeur)
@@ -77,23 +106,69 @@ void CGraphe::GRAAjouter_Sommet(unsigned int uiValeur)
 	uiGRANombreDeSommets++;
 }
 
-void CGraphe::GRAModifier_Sommet(CSommet sommet, unsigned int uiNouvelleValeur)
+void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur)
 {
-	sommet.SOMModifier_Numero(uiNouvelleValeur);
+	
+	unsigned int uiPos = 0;
+	if (GRAPresence_Sommet(uiAncienneValeur) > 0) // Si lélément est bien présent
+	{
+		/* Etape 1 : Recherche du Sommet */
+		while (ppSOMGRAListeSommets[uiPos]->SOMAfficher_Sommet() != uiAncienneValeur)uiPos++;  // Positionne le pointeur 
+
+		/* Etape 2 : modification */
+		ppSOMGRAListeSommets[uiPos]->SOMModifier_Numero(uiNouvelleValeur);
+	}
+	
 }
 
-void CGraphe::GRASupprimer_Sommet(CSommet sommet)
+void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 {
+	unsigned int uiPosNouvelle = 0;
+	CSommet ** ppSOMBuffer;
+
+	/* Etape 0 : L'élément existe - t - il?*/
+	if (GRAPresence_Sommet(uiValeur)) // présence de lélément
+	{
+		/* Etape 1: Allocation de la nouvelle zone memoire */
+		ppSOMBuffer = (CSommet **) malloc(sizeof(void*) * (uiGRANombreDeSommets-1));
+
+		/* Etape 2: Recopie */
+		for (unsigned int uiPosAncienne = 0; uiPosAncienne < uiGRANombreDSommets; uiPosAncienne++)
+		{
+			/* Etape 2.1 : Element à supprimer*/
+			if (ppSOMGRAListeSommets[uiPosAncienne]->SOMLire_Numero() == uiValeur)
+			{
+				/*Etape 2.1.A : Retirer le nb d'arc de ce sommet du graphe */
+				uiGRANombreDArc -= ppSOMGRAListeSommets[uiPosAncienne]->SOMLire_ArcPartant();
+
+				/* Etape 2.1.B : Retirer tous les Arcs partant et arrivant dans les autres CSommets */
+				// Partant de uiValeur
+
+				// Arrivant de uiValeur
+				// TO-DO
+			}
+		}
+		/* Etape 3: Sauvegarde des nouveaux paramétre et libération de l'ancienne chaine */
+	}
 
 }
 
 unsigned int CGraphe::GRAPresence_Sommet(unsigned int uiValeur)
 {
-	return 0;
+	unsigned int uiPos = 0;
+
+	// positionnement 
+	while (ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() != uiValeur && uiGRANombreDeSommets > uiValeur)
+	{
+		uiPos++;
+	}
+	// Test
+	return ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() == uiValeur;
 }
 
 void CGraphe::GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 {
+
 }
 
 void CGraphe::GRAModifier_Arc(unsigned int uiAncienDepart, unsigned int uiAncienArrivee, unsigned int uiNouveauDepart, unsigned int uiNouvelleArrivee)

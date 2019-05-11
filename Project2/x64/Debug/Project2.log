@@ -1,4 +1,8 @@
-﻿  CSommet.cpp
+﻿  CArc.cpp
+  CException.cpp
+  CSommet.cpp
+  CStockageElement.cpp
   main.cpp
+  CString.cpp
   Génération de code en cours...
   Project2.vcxproj -> E:\Bureau\Projet\x64\Debug\Project2.exe
