@@ -4,7 +4,8 @@
 #include "CFichier.h"
 
 #define ARC_INEXISTANT 33
-#define CIBLE_INEXISTANTE 34
+#define CIBLE_INEXISTANTE 33
+#define SOMMET_NEGATIF 34
 class CGraphe
 {
 private :

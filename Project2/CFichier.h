@@ -54,7 +54,7 @@ const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info
 #define DECLARATION_LIGNE_COLONNE_INVALID 21
 #define DECLARATION_DOUBLE_SOMMET 22
 #define DECLARATION_SOMMET_NEXISTE_PAS 23
-
+#define SOMMET_NEGATIF 34
 class CFichier
 {
 public:
