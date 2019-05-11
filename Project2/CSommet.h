@@ -1,8 +1,9 @@
 #ifndef CSOMMET_H
 #define CSOMMET_H
 #include "CArc.h"
-#include <stdlib.h>
 #include "CException.h"
+#include <stdlib.h>
+
 
 #define REALLOC_PROBLEME 31
 
@@ -42,11 +43,13 @@ public:
 	void SOMRetirer_Arc_Arrivant(unsigned int uiCible); 
 	void SOMRetirer_Arc_Sortant(unsigned int uiCible); 
 
-	unsigned int SOMArrivant_Existe_T_Il(unsigned int uiCible); 
-	unsigned int SOMPartant_Existe_T_Il(unsigned int uiCible); 
+	int SOMArrivant_Existe_T_Il(unsigned int uiCible); 
+	int SOMPartant_Existe_T_Il(unsigned int uiCible); 
+
+	void SOMInverser_Arc();
 
 	void SOMAfficher_Sommet();			
 	CSommet & operator=(CSommet &SOMParam); 
 };
-
+#include "CSommet.cpp"
 #endif //CSOMMET_H

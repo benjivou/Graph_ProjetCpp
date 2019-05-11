@@ -1,4 +1,4 @@
-#include "CSommet.h"
+
 
 
 CSommet::CSommet()
@@ -95,21 +95,21 @@ void CSommet::SOMAjouter_Arc_Sortant(CArc * pARC)
 {
 	ppARCSOMPartant == nullptr ?
 		ppARCSOMPartant = (CArc **)malloc(sizeof(void*)) :											// premier element
-		ppARCSOMPartant = (CArc **)realloc(ppARCSOMPartant, sizeof(void*) * (uiSOMTailleArrivant + 1));// autres elements
+		ppARCSOMPartant = (CArc **)realloc(ppARCSOMPartant, sizeof(void*) * (uiSOMTaillePartant + 1));// autres elements
 
 	if (ppARCSOMPartant == nullptr) throw(*new CException(REALLOC_PROBLEME));
 
-	ppARCSOMPartant[uiSOMTailleArrivant] = pARC; // Stockage 
-	uiSOMTailleArrivant++;
+	ppARCSOMPartant[uiSOMTaillePartant] = pARC; // Stockage 
+	uiSOMTaillePartant++;
 }
 
 void CSommet::SOMRetirer_Arc_Arrivant(unsigned int uiCible)
 {
-	unsigned int uiNboccurrence = SOMArrivant_Existe_T_Il(uiCible); // recupération du nombre d'occurrence a enlever
+	int iPosition = SOMArrivant_Existe_T_Il(uiCible); // recupération la position de l'élément
 
-	if (uiNboccurrence > 0) // on doit retirer des éléments
+	if (iPosition > -1) // on doit retirer des éléments
 	{
-		unsigned int uiTailleNouvelleChaine = uiSOMTailleArrivant - uiNboccurrence;
+		unsigned int uiTailleNouvelleChaine = uiSOMTailleArrivant - 1;
 
 		if (uiTailleNouvelleChaine) // il reste des éléments à dans la chaine apres deletion
 		{
@@ -132,17 +132,17 @@ void CSommet::SOMRetirer_Arc_Arrivant(unsigned int uiCible)
 			free(ppARCSOMArrivant);
 			ppARCSOMArrivant = nullptr;
 		}
-		uiSOMTailleArrivant = uiNboccurrence;
+		uiSOMTailleArrivant = uiTailleNouvelleChaine;
 	}
 }
 
 void CSommet::SOMRetirer_Arc_Sortant(unsigned int uiCible)
 {
-	unsigned int uiNboccurrence = SOMPartant_Existe_T_Il(uiCible); // recupération du nombre d'occurrence a enlever
+	int iPosition = SOMPartant_Existe_T_Il(uiCible); // recupération la position de l'élément
 
-	if (uiNboccurrence > 0) // on doit retirer des éléments
+	if (iPosition > -1) // on doit retirer des éléments
 	{
-		unsigned int uiTailleNouvelleChaine = uiSOMTaillePartant - uiNboccurrence;
+		unsigned int uiTailleNouvelleChaine = uiSOMTaillePartant - 1;
 
 		if (uiTailleNouvelleChaine) // il reste des éléments à dans la chaine apres deletion
 		{
@@ -165,45 +165,67 @@ void CSommet::SOMRetirer_Arc_Sortant(unsigned int uiCible)
 			free(ppARCSOMPartant);
 			ppARCSOMPartant = nullptr;
 		}
-		uiSOMTaillePartant = uiNboccurrence;
+		uiSOMTaillePartant--;
 	}
 }
 
-unsigned int CSommet::SOMArrivant_Existe_T_Il(unsigned int uiCible)
+int CSommet::SOMArrivant_Existe_T_Il(unsigned int uiCible)
 {
-	unsigned int iNbOccurrence = 0;
+	int iPosition = -1;
 	for ( unsigned int uiPos = 0; uiPos < uiSOMTailleArrivant; uiPos++)
 	{
 		if (uiCible == ppARCSOMArrivant[uiPos]->ARCLire_Destination())
 		{
-			iNbOccurrence++;
+			iPosition = (int) uiPos;
 		}
 	}
-	return iNbOccurrence;
+	return iPosition;
 }
 
-unsigned int CSommet::SOMPartant_Existe_T_Il(unsigned int uiCible)
+int CSommet::SOMPartant_Existe_T_Il(unsigned int uiCible)
 {
-	int iNbOccurrence = 0;
+	int iPosition = -1;
 	for (unsigned int uiPos = 0; uiPos < uiSOMTaillePartant; uiPos++)
 	{
 		if (uiCible == ppARCSOMPartant[uiPos]->ARCLire_Destination())
 		{
-			iNbOccurrence++;
+			iPosition = (int) uiPos;
 		}
 	}
-	return iNbOccurrence;
+	return iPosition;
+}
+
+/* 
+ *\brief inverse les arcs sortants et entrant, 
+ * bien faire attention à l'integrité du Graphe apres les modifications
+ */
+void CSommet::SOMInverser_Arc()
+{
+	CArc ** ppARCBuffer;
+	unsigned int uiBuffer;
+
+	/* On deplace d'abord les espace mémoires */
+	
+	ppARCBuffer = ppARCSOMArrivant;
+	ppARCSOMArrivant = ppARCSOMPartant;
+	ppARCSOMPartant = ppARCBuffer;
+	/*  Ensuite les tailles */
+	uiBuffer = uiSOMTailleArrivant;
+	uiSOMTailleArrivant = uiSOMTaillePartant;
+	uiSOMTaillePartant = uiBuffer;
 }
 
 void CSommet::SOMAfficher_Sommet()
 {
-	cout << "Sommet : " << uiSOMNumero << endl ;
-	if (uiSOMTailleArrivant)
+	printf("Sommet : %d \n", uiSOMNumero);
+
+	if (uiSOMTaillePartant>0)
 	{
-		cout << "Ses Arcs partants sont :" << endl;
-		for (unsigned int uiPos = 0; uiPos < uiSOMTailleArrivant; uiPos++)
+		printf("Ses Arcs partants sont :\n");
+
+		for (unsigned int uiPos = 0; uiPos < uiSOMTaillePartant; uiPos++)
 		{
-			cout << " -> " << ppARCSOMArrivant[uiPos]->ARCLire_Destination() << endl;
+			printf("-> %d\n", ppARCSOMPartant[uiPos]->ARCLire_Destination());
 		}
 	}
 	

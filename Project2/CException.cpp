@@ -1,6 +1,5 @@
 ﻿#include "CException.h"
-#include <iostream>
-using namespace std;
+
 
 CException::CException()
 {

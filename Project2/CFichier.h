@@ -80,7 +80,6 @@ private:
 	unsigned int uiFICNBSommet;
 	unsigned int uiFICNBArc;
 
-	
 	int* FICRecup_Ligne_Argument(char* pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise);
 	int FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement);
 };

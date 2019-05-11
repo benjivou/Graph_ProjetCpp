@@ -1,6 +1,7 @@
 #ifndef CEXCEPTION_H
 #define CEXCEPTION_H
-
+#include <iostream>
+using namespace std;
 class CException
 {
 

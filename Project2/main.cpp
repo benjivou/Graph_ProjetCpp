@@ -2,10 +2,10 @@
 // Ex�cuter le programme : Ctrl+F5 ou menu D�boguer > Ex�cuter sans d�bogage
 // D�boguer le programme : F5 ou menu D�boguer > D�marrer le d�bogage
 
-#include "CGraphe.h"
-
 #include <iostream>
 #include <stdio.h>
+#include "CGraphe.h"
+
 
 using namespace std;
 
@@ -24,8 +24,8 @@ int main()
 	{
 		try
 		{
-			CFichier *buffer = new CFichier(ppcFichierTest[i]);
-			buffer->FICAffiche_Contenu_Fich();
+			CGraphe *buffer = new CGraphe(ppcFichierTest[i]);
+			buffer->GRAAfficher_Graphe();
 			delete(buffer);
 
 		}
@@ -36,6 +36,7 @@ int main()
 		
 
 	}
+	/*
 	// Test Arc
 	CArc *c1 = new CArc(1);
 	CArc *c2 = new CArc(2);
@@ -46,7 +47,7 @@ int main()
 	CSommet *sommet3 = new CSommet(3);
 	CSommet *sommet4 = new CSommet(*sommet3);
 	*sommet1 = *sommet3;
-	sommet1->SOMAfficher_Sommet();
+	//sommet1->SOMAfficher_Sommet();*/
 	getchar();
 	return 0;
 }
