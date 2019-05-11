@@ -3,15 +3,16 @@
 *	dans une matrice et garde le type dans un attribut
 */
 
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
 
-#include "CException.h"
-#include "CStockageElement.h" // contenaire pour stocker les données du graphe
 
 #ifndef CFICHIER_H
 #define CFICHIER_H
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include "CString.h"			// Methodes de parser et traitement diverser sur les char *
+#include "CStockageElement.h"	// contenaire pour stocker les données du graphe
+
 
 
 #define MAX_LONGUEUR_LINE 80
@@ -78,11 +79,7 @@ private:
 	unsigned int uiFICNBSommet;
 	unsigned int uiFICNBArc;
 
-	unsigned int FICLongueur_De_Chaine(const char *);
-	void FICEst_Un_Entier(const char* pcValeur);
-	char* FICTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);
-	int FICDemarre_Avec(const char* cPrefix, const char* cMot, int iLongueurPrefix);
-	int FICCopie_String(char *pcSrc, char* pcDest);
+	
 	int* FICRecup_Ligne_Argument(char* pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise);
 	int FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement);
 };

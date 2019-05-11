@@ -1,15 +1,15 @@
-#include"CException.h"
-#include <stdlib.h>
-#include <iostream>
-#include <stdio.h>
-
+#ifndef CSTOCK
+#define CSTOCK
 /*
  *\brief L'objectif est d'avoir une boite d'éléments permettant de créer un sommet et ses arcs sortants
  * utiliser cette classe permet de garder une évolutivité pour le code du 3ème projet
  */
 
-#ifndef CSTOCK
-#define CSTOCK
+#include"CException.h"
+#include <stdlib.h>
+#include <iostream>
+#include <stdio.h>
+
 using namespace std;
 
 /* Message d'Erreur*/

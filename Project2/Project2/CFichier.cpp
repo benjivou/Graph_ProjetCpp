@@ -1,4 +1,3 @@
-#include "CFichier.h"
 
 
 /**
@@ -78,7 +77,7 @@ CFichier::CFichier(const char * cAdresse)
 		while (uiLigne < NB_BALISE && fgets(pcLine, MAX_LONGUEUR_LINE, pfFile) != NULL)
 		{
 			/* test qui determine qui permet de passer à la ligne suivante si on a un ']' *////////////////////////
-			if (FICDemarre_Avec("]", pcLine, MAX_LONGUEUR_LINE) == 1)
+			if (CString::STRDemarre_Avec("]", pcLine, MAX_LONGUEUR_LINE) == 1)
 			{
 				uiLigne++;
 				
@@ -89,7 +88,7 @@ CFichier::CFichier(const char * cAdresse)
 			/* test de la balise */
 
 			// balise invalide
-			if (FICDemarre_Avec(ppcTestBaliseParametrique[uiLigne], pcLine, MAX_LONGUEUR_LINE) == 0  )
+			if (CString::STRDemarre_Avec(ppcTestBaliseParametrique[uiLigne], pcLine, MAX_LONGUEUR_LINE) == 0  )
 			{
 				fclose(pfFile);
 				CException EXCBalise_Invalid(BALISE_INVALID);
@@ -222,122 +221,6 @@ void CFichier::FICAffiche_Contenu_Fich()
 	}
 }
 
-/*
- * \brief commportement identique à strLength() en C
- */
-unsigned int CFichier::FICLongueur_De_Chaine(const char * pcChaine)
-{
-	unsigned int uiTaille = 0;
-	
-	while (pcChaine[uiTaille] != '\0')
-	{
-		uiTaille++;
-	}
-	return uiTaille;
-}
-
-void CFichier::FICEst_Un_Entier(const char * pcValeur)
-{
-	unsigned int uiPos = 0;
-	
-	
-	while ( (pcValeur[uiPos] >= '0' && pcValeur[uiPos] <= '9') || (uiPos == 0 && ( pcValeur[uiPos] == '+' || pcValeur[uiPos]== '-')))
-	{
-		
-		uiPos++;
-	}
-
-	if (pcValeur[uiPos] != '\n' &&  pcValeur[uiPos] != '\0')
-	{
-		CException *pEXCErreur = new CException(NOT_A_NUMBER);
-		throw(*pEXCErreur);
-	}
-}
-
-
-	
-	
-
-/*
- *\brief trouve la première occurrence de cSeparateur dans la pcLigne
- *\param[in] pcLigne Ligne à parser 
- *\param[in] cSeparateur éleemnt à chercher
- *\param[out] pointeur sur la nouvelle occurrence, sinon nullptr
- */
-char * CFichier::FICTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur)
-{
-	int iCurseur = 0;
-	while (pcLigne[iCurseur] != '\0')
-	{
-
-		if (pcLigne[iCurseur] == cSeparateur)
-		{
-			return pcLigne + iCurseur;
-		}
-		iCurseur++;
-	}
-	return nullptr;
-}
-
-/**
- *\brief fonction cacher pour tester les balises
- *\param[in] cPrefx	le préfix recherché
- *\param[in] cMot à comparer
- *\param[in] iLongueurPrefix Taille du prefix
- *\param[out] 1 si c'est bon 0 sinon
- */
-int CFichier::FICDemarre_Avec(const char * cPrefix, const char * cMot, int iLongueurPrefix)
-{	
-	{
-		
-		int iRes = 0;
-		int iPosition = 0;
-		/*
-		 * Etats de sorties des 3 tests du while
-		 * Cas 1: On a comparé toutes les caractères du Prefix 
-		 * Cas 2: le mot est trop cours 
-		 * Cas 3: les caractères ne correspond pas
-		 */
-		while (iPosition < iLongueurPrefix && cMot[iPosition] != '\0' && cPrefix[iPosition] == cMot[iPosition])
-		{
-			
-			iPosition++;
-
-		}
-		// Les prefix est bien le bon
-		if (cPrefix[iPosition] == '\0'	)
-		{
-			iRes = 1;
-		}
-		
-		return iRes;
-	}
-}
-
-
-/**
- *\brief Rempli pcDest avec les elements de pcSrc
- *\param[in] pcSrc
- *\param[in] pcDest
- *\param[out] 1 si c'est bon 0 sinon
- */
-int CFichier::FICCopie_String(char * pcSrc, char * pcDest)
-{
-	int iPos1 = 0;
-	int res;
-	// Stockage des éléments
-
-	while (*(pcSrc + iPos1) != '\0' && iPos1 < MAX_TAILLE_ARG)	// MAX_TAILLE_ARG donne la taille max du buffer pcDest
-	{
-		pcDest[iPos1] = pcSrc[iPos1];			
-		iPos1++;
-	}
-
-	pcSrc[iPos1] == '\0' ? res = 0  : res = 1;	// donne 1 s'il n'y a pas de problème
-	pcDest[iPos1] = '\0';						// fermeture de la chaine destinataire
-	return res;
-}
-
 /**
  *\brief rempli la matrice du cfichier avec une ligne d'élément
  *\param[in] pcligne ligne de départ
@@ -369,15 +252,15 @@ int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseA
 		while (uiNumBalise < uiNBdeBalise)
 		{
 			/* Phase 1 : fermeture de chaine */
-			pcCurseur = FICTrouve_Premiere_Occurrence(pcLigne, ','); // positionnement 
+			pcCurseur = CString::STRTrouve_Premiere_Occurrence(pcLigne, ','); // positionnement 
 			if (pcCurseur != nullptr) *pcCurseur = '\0';			 // fermeture si besoin
 			
 			/* phase 2 : positionner le pointeur sur l'élément à convertir */
-			pcLigne = FICTrouve_Premiere_Occurrence(pcLigne, '=') + 1;
+			pcLigne = CString::STRTrouve_Premiere_Occurrence(pcLigne, '=') + 1;
 			
 			/* phase 3 : recup et stockage */
 			
-			FICEst_Un_Entier(pcLigne);
+			CString::STREst_Un_Entier(pcLigne);
 			
 			piResultat[uiNumBalise] = atoi(pcLigne);
 
