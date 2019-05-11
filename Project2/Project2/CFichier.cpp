@@ -39,10 +39,6 @@ CFichier::CFichier(const char * cAdresse)
 	
 	printf("%s \n", cAdresse);
 	
-
-
-	
-
 	unsigned int uiLigne = 0;		// donne la ligne du fichier en cours d'étude
 	char pcLine[MAX_LONGUEUR_LINE];	// ligne d'argument pour créer la matrice
 	int* piListeSommet = nullptr;	// stock les sommets déja vus
@@ -53,7 +49,7 @@ CFichier::CFichier(const char * cAdresse)
 	unsigned int uiNBArc;			// stocke le nombre d'arc à générer
 	unsigned int uiNBSommet;		// stocke le nombre de sommet à générer
 	unsigned int uiBufferPosition;  // stocke la position de la position à remplir suivant les cas
-	int * piBuffer;					// stocke le resultat de le buffer des arg de la ligne
+	int * piBuffer;					// stocke le resultat du buffer des arg de la ligne
 	int iBufSommet;					// stocke la valeur du sommet temporairement 
 	unsigned int uiPositionDepart;	// stocke la position de depart dans l'arc
 	int iSommet;					// stocke la nom du sommet de depart d'un arc

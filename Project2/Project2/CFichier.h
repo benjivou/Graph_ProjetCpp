@@ -67,12 +67,9 @@ public:
 	unsigned int FICLire_NBSommet() { return uiFICNBSommet; }; // inline
 	unsigned int FICLire_NBArc() { return uiFICNBArc; }; // inline
 
-
 	// Afficheur
 	void FICAffiche_Contenu_Fich();	// affiche le contenu de la matrice
 
-	
-	
 private:
 	
 	CStockageElement ** ppSTOFICStockage;

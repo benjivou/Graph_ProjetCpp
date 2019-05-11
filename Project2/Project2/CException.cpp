@@ -9,28 +9,10 @@ CException::~CException()
 {
 }
 
-void CException::EXCAfficherErreur()
+void CException::EXCAfficher_Erreur()
 {
-	switch (EXCLireErreur())
+	switch (EXCLire_Erreur())
 	{
-	case 1:
-		cerr << "Erreur : Initialisation taille matrice" << endl;
-		break;
-
-	case 2:
-		cerr << "Erreur : Addition de deux matrices" << endl;
-		break;
-
-	case 3:
-		cerr << "Erreur : Soustraction de deux matrices" << endl;
-		break;
-	case 4:
-		cerr << "Erreur : Multiplication de deux matrices" << endl;
-		break;
-
-	case 5:
-		cerr << "Erreur : Division par un scalaire egale a 0" << endl;
-		break;
 	case 11:
 		cerr << "Erreur : Chemin invalid " << endl;
 		break;
@@ -44,7 +26,7 @@ void CException::EXCAfficherErreur()
 		cerr << "Erreur: Type different de double" << endl;
 		break;
 	case 15:
-		cerr << "Erreur: Taille invalid de matrice, Corrigez le fichier" << endl;
+		cerr << "Erreur: Taille invalide de matrice, Corrigez le fichier" << endl;
 		break;
 	case 16:
 		cerr << "Erreur: La Valeur n'est pas un entier naturel" << endl;
@@ -56,10 +38,10 @@ void CException::EXCAfficherErreur()
 		cerr << "Erreur: Matrice Mal déclarée" << endl;
 		break;
 	case 19:
-		cerr << "Erreur: probleme allocation memeoire" << endl;
+		cerr << "Erreur: probleme allocation memoire" << endl;
 		break;
 	case 20:
-		cerr << "Erreur: Syntax erreur : Crochet mal place" << endl;
+		cerr << "Erreur: Syntaxe erreur : Crochet mal place" << endl;
 		break;
 	case 21:
 		cerr << "Erreur: Declaration probleme : Sommet / Arc non declare" << endl;
@@ -77,7 +59,7 @@ void CException::EXCAfficherErreur()
 		cerr << "Erreur: probleme re/allocation memoire" << endl;
 		break;
 	case 32:
-		cerr << "Erreur: probleme allocation memeoire : Stockage vide" << endl;
+		cerr << "Erreur: probleme allocation memoire : Stockage vide" << endl;
 		break;
 	}
 }
