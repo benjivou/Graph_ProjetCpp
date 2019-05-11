@@ -27,7 +27,7 @@ CGraphe::CGraphe(const char * pcFichier) {
 	/* Stockage \ génération */
 	for (unsigned int uiPos = 0; uiPos < uiGRANombreDeSommets; uiPos++)
 	{
-		ppSOMGRAListeSommets[uiPos] = new CSommet(ppSTOListeDuGraph[uiPos]->iSTOLire_Sommet());
+		ppSOMGRAListeSommets[uiPos] = new CSommet(ppSTOListeDuGraph[uiPos]->STOLire_Sommet());
 	}
 
 	/* Etape 4 : Generation des Arcs */
@@ -36,14 +36,14 @@ CGraphe::CGraphe(const char * pcFichier) {
 	{
 
 		// Si on a bien des arcs sortant 
-		if (ppSTOListeDuGraph[uiPosSommet]->uiLire_NBCible() > 0)
+		if (ppSTOListeDuGraph[uiPosSommet]->STOLire_NBCible() > 0)
 		{
 			uiBufferPosition = 0;
 			// recuperation des sommets sortants
-			puiBufferArc = ppSTOListeDuGraph[uiPosSommet]->piSTOLire_Cibles();
+			puiBufferArc = ppSTOListeDuGraph[uiPosSommet]->STOLire_Cibles();
 
 			// On rempli le sommet avec les arcs
-			for (unsigned int uiPosArc = 0; uiPosArc < ppSTOListeDuGraph[uiPosSommet]->uiLire_NBCible(); uiPosArc++)
+			for (unsigned int uiPosArc = 0; uiPosArc < ppSTOListeDuGraph[uiPosSommet]->STOLire_NBCible(); uiPosArc++)
 			{
 				ppSOMGRAListeSommets[uiPosSommet]->SOMAjouter_Arc_Sortant(new CArc(puiBufferArc[uiPosArc])); // remplissage des sommet sortants 
 

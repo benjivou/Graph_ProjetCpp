@@ -9,7 +9,7 @@
 class CString
 {
 public:
-	static unsigned int STRLongueur_De_Chaine(const char *);
+	static unsigned int STRLongueur_De_Chaine(const char *pcChaine);
 	static void STREst_Un_Entier(const char* pcValeur);
 	static char* STRTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);
 	static int STRDemarre_Avec(const char* cPrefix, const char* cMot, int iLongueurPrefix);

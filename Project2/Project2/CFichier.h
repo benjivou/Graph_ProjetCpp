@@ -57,6 +57,15 @@ const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info
 
 class CFichier
 {
+private:
+
+	CStockageElement ** ppSTOFICStockage;
+	unsigned int uiFICNBSommet;
+	unsigned int uiFICNBArc;
+
+	int* FICRecup_Ligne_Argument(char* pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise);
+	int FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement);
+
 public:
 	CFichier();
 	CFichier(const char* adrcAdresse);
@@ -70,15 +79,6 @@ public:
 	// Afficheur
 	void FICAffiche_Contenu_Fich();	// affiche le contenu de la matrice
 
-private:
-	
-	CStockageElement ** ppSTOFICStockage;
-	unsigned int uiFICNBSommet;
-	unsigned int uiFICNBArc;
-
-	
-	int* FICRecup_Ligne_Argument(char* pcLigne, const char ** ppcBaliseATrouver, unsigned int uiNBdeBalise);
-	int FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement);
 };
 #include "CFichier.cpp"
 #endif // !CFICHIER_H
