@@ -228,15 +228,6 @@ void CSommet::SOMAfficher_Sommet()
 			printf("-> %d\n", ppARCSOMPartant[uiPos]->ARCLire_Destination());
 		}
 	}
-	if (uiSOMTailleArrivant > 0)
-	{
-		printf("Ses Arcs arrivant sont :\n");
-
-		for (unsigned int uiPos = 0; uiPos < uiSOMTailleArrivant; uiPos++)
-		{
-			printf("-> %d\n", ppARCSOMArrivant[uiPos]->ARCLire_Destination());
-		}
-	}
 	
 }
 
