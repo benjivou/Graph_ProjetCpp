@@ -54,9 +54,10 @@ CFichier::CFichier(const char * cAdresse)
 	unsigned int uiBufferPosition;  // stocke la position de la position à remplir suivant les cas
 	int * piBuffer;					// stocke le resultat de le buffer des arg de la ligne
 	int iBufSommet;					// stocke la valeur du sommet temporairement 
-	unsigned int uiPositionDepart;	// stocke la position de depart dans l'arc
+
 	int iSommet;					// stocke la nom du sommet de depart d'un arc
 	int iBuffer;					// stocke la postion du sommet dans la liste pc
+	int iPosSommetDepart,iPosSommetFin; // stocke la position des sommets d'un arc
 	/* Step1 : Ouverture du flux */
 	FILE *pfFile;
 	fopen_s(&pfFile, cAdresse, "r");
@@ -130,9 +131,9 @@ CFichier::CFichier(const char * cAdresse)
 					if (iBuffer < 0) throw(*new CException(NOT_A_VALID_DIMENSION)); // intialisation avec des valeurs negatives
 
 					uiNBArc = (unsigned int) iBuffer; // stockage
-					free(piBuffer);	//vidange
+					//free(piBuffer);	//vidange
 
-					uiLigne++;
+					++uiLigne;
 					break;
 
 				case 2: // Balise SOMMET[
@@ -184,18 +185,26 @@ CFichier::CFichier(const char * cAdresse)
 					
 					/* Etape 2 : Recuperation de la valeur et stockage sur la première ligne*/
 					piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseArc, 2);	// recupération
-					iBuffer = FICSommet_Existe_T_Il(piBuffer[0], piListeSommet, uiFICNBSommet);
-					iSommet = piBuffer[1];
-
+					iPosSommetDepart = FICSommet_Existe_T_Il(piBuffer[0], piListeSommet, uiFICNBSommet); // sommet de depart
+					iPosSommetFin= FICSommet_Existe_T_Il(piBuffer[1], piListeSommet, uiFICNBSommet); // position du sommet de  fin dans la liste des sommets
+					iBuffer = piBuffer[0];		// sommet de depart
+					iSommet = piBuffer[1];		// sommet d'arrivée
 					free(piBuffer);		// vidange 
 
 					/* Etape 3 : Teste de l'existance des sommets*/
-					iBuffer > -1 && FICSommet_Existe_T_Il(iSommet, piListeSommet,uiFICNBSommet) > -1 ?
-						uiPositionDepart = (unsigned int) iBuffer:
+					if (iPosSommetDepart > -1 && iPosSommetFin > -1)
+					{
+						ppSTOFICStockage[iPosSommetDepart]->STOAjouter_Arc(iSommet);
+						ppSTOFICStockage[iPosSommetFin]->STOAjouter_Arc(iBuffer);
+					}
+					else
+					{
 						throw(*new CException(DECLARATION_SOMMET_NEXISTE_PAS));
+					}
+						
 
 					/* Etape 4 : Stockage */
-					ppSTOFICStockage[uiPositionDepart]->STOAjouter_Arc(iSommet);
+					
 					uiFICNBArc++;
 					break;
 				default:

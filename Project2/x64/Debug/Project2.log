@@ -1,5 +1,3 @@
 ﻿  main.cpp
-main.obj : error LNK2019: symbole externe non résolu "public: __cdecl CGraphe::CGraphe(char const *)" (??0CGraphe@@QEAA@PEBD@Z) référencé dans la fonction main
-main.obj : error LNK2019: symbole externe non résolu "public: __cdecl CGraphe::~CGraphe(void)" (??1CGraphe@@QEAA@XZ) référencé dans la fonction "public: void * __cdecl CGraphe::`scalar deleting destructor'(unsigned int)" (??_GCGraphe@@QEAAPEAXI@Z)
-main.obj : error LNK2019: symbole externe non résolu "public: void __cdecl CGraphe::GRAAfficher_Graphe(void)" (?GRAAfficher_Graphe@CGraphe@@QEAAXXZ) référencé dans la fonction main
-E:\Bureau\Projet\x64\Debug\Project2.exe : fatal error LNK1120: 3 externes non résolus
+e:\document\github\graph_projetcpp\project2\cfichier.cpp(57): warning C4101: 'uiPositionDepart' : variable locale non référencée
+  Project2.vcxproj -> E:\Document\GitHub\Graph_ProjetCpp\x64\Debug\Project2.exe

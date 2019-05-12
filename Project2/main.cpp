@@ -26,6 +26,7 @@ int main()
 		{
 			CGraphe *buffer = new CGraphe(ppcFichierTest[i]);
 			buffer->GRAAfficher_Graphe();
+			buffer->GRAInverser_Graph().GRAAfficher_Graphe();
 			delete(buffer);
 
 		}
@@ -36,18 +37,7 @@ int main()
 		
 
 	}
-	/*
-	// Test Arc
-	CArc *c1 = new CArc(1);
-	CArc *c2 = new CArc(2);
-
-	//Test CSommet
-	CSommet *sommet1 = new CSommet(1);
-	CSommet *sommet2 = new CSommet(2);
-	CSommet *sommet3 = new CSommet(3);
-	CSommet *sommet4 = new CSommet(*sommet3);
-	*sommet1 = *sommet3;
-	//sommet1->SOMAfficher_Sommet();*/
+	
 	getchar();
 	return 0;
 }

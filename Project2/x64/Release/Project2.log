@@ -1,8 +1,3 @@
-﻿  CException.cpp
-  main.cpp
-  Génération de code en cours
-  4 of 53 functions ( 7.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    7 functions had inline decision re-evaluated but remain unchanged
-  Fin de la génération du code
-  Project2.vcxproj -> E:\Bureau\Projet\x64\Release\Project2.exe
+﻿  main.cpp
+e:\document\github\graph_projetcpp\project2\cfichier.cpp(57): warning C4101: 'uiPositionDepart' : variable locale non référencée
+e:\document\github\graph_projetcpp\project2\cgraphe.cpp(49): error C2109: un indice requiert un type tableau ou pointeur
