@@ -26,8 +26,12 @@ int main()
 		{
 			CGraphe *buffer = new CGraphe(ppcFichierTest[i]);
 			buffer->GRAAfficher_Graphe();
+			cout << endl << " Inverser graph " << endl;
 			buffer->GRAInverser_Graph() .GRAAfficher_Graphe();
 			
+			cout << endl << " On retire le sommet 1" << endl;
+			buffer->GRASupprimer_Sommet(1);
+			buffer->GRAAfficher_Graphe();
 			delete(buffer);
 
 		}
