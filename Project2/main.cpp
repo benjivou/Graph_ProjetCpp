@@ -32,6 +32,7 @@ int main()
 			cout << endl << " On retire le sommet 1" << endl;
 			buffer->GRASupprimer_Sommet(1);
 			buffer->GRAAfficher_Graphe();
+			
 			delete(buffer);
 
 		}
