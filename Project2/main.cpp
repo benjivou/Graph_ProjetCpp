@@ -26,7 +26,7 @@ int main()
 		{
 			CGraphe *buffer = new CGraphe(ppcFichierTest[i]);
 			buffer->GRAAfficher_Graphe();
-			//buffer->GRAInverser_Graph() .GRAAfficher_Graphe();
+			buffer->GRAInverser_Graph() .GRAAfficher_Graphe();
 			
 			delete(buffer);
 

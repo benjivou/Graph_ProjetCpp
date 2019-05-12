@@ -50,7 +50,7 @@ CGraphe::CGraphe(const char * pcFichier) {
 				while (ppSOMGRAListeSommets[uiBufferPosition]->SOMLire_Numero() != puiBufferArc[uiPosArc]) ++uiBufferPosition;
 				
 				// On rempli le sommet cible
-				ppSOMGRAListeSommets[uiBufferPosition]->SOMAjouter_Arc_Arrivant(new CArc(puiBufferArc[ppSOMGRAListeSommets[uiPosSommet]->SOMLire_Numero()]));
+				ppSOMGRAListeSommets[uiBufferPosition]->SOMAjouter_Arc_Arrivant(new CArc(ppSOMGRAListeSommets[uiPosSommet]->SOMLire_Numero()));
 			}
 		}
 	}
