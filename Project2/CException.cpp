@@ -1,6 +1,5 @@
 ﻿#include "CException.h"
-#include <iostream>
-using namespace std;
+
 
 CException::CException()
 {
@@ -78,6 +77,12 @@ void CException::EXCAfficherErreur()
 		break;
 	case 32:
 		cerr << "Erreur: probleme allocation memeoire : Stockage vide" << endl;
+		break;
+	case 33: 
+		cerr << "Erreur : Arc : Arc indefinie"<< endl;
+		break;
+	case 34:
+		cerr << "Erreur : Somme negatif" << endl;
 		break;
 	}
 }

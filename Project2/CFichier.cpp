@@ -1,5 +1,4 @@
 
-
 /**
  *\brief Constructeur par défaut il sert simplement à éviter les problèmes de créations par défaut
  */
@@ -151,7 +150,11 @@ CFichier::CFichier(const char * cAdresse)
 					piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseSommet, 1);	// recupération
 					iBufSommet = piBuffer[0]; // stockage
 					free(piBuffer);	//vidange
-					
+					// erreur Sommet negatif
+					if (iBufSommet < 0)
+					{
+						throw(*new CException(SOMMET_NEGATIF));
+					}
 					/* Etape 3 : Teste de l'existance de ce sommet*/
 					FICSommet_Existe_T_Il(iBufSommet, piListeSommet, uiBufferPosition) == -1?
 						piListeSommet[uiBufferPosition] = iBufSommet : // stockage du nouveau sommet

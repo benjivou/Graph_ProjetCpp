@@ -125,7 +125,6 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CException.cpp" />
-    <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CStockageElement.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CString.cpp" />
