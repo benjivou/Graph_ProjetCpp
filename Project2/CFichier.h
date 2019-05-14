@@ -1,5 +1,5 @@
-/*	@brief Cette classe permet de r�cup�rer
-*	les informations du fichier et apr�s les stocks
+/*	@brief Cette classe permet de récupérer
+*	les informations du fichier et après les stocks
 *	dans une matrice et garde le type dans un attribut
 */
 
@@ -10,8 +10,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "CString.h"			// Methodes de parser et traitement diverser sur les char *
-#include "CStockageElement.h"	// contenaire pour stocker les données du graphe
+#include "CString.h"			// Méthodes de parser et traitement diverser sur les char *
+#include "CStockageElement.h"	// contener pour stocker les données du graphe
 
 
 
@@ -40,20 +40,19 @@ const char *ppcTestBaliseSommet[] = { pcBaliseSommetNumero };						// info à r�
 const char *ppcTestBaliseArc[] = { pcBaliseArcDebut,pcBaliseArcFin };				// info à récupérer pour une ligne d'Arc
 
 
-/* Message d'erreur */
-#define CHEMIN_INVALID 11
-#define BALISE_INVALID 12
-#define TYPE_TROP_LONG 13
-#define MAUVAIS_TYPE_MATRICE 14
-#define GRAPH_VIDE 15
-#define NOT_A_NUMBER 16
-#define NOT_A_VALID_DIMENSION 17
-#define MATRICE_MAL_DECLARE 18
-#define MATRICE_INITIALISATION_RATE 19
-#define CROCHET_MAL_PLACE 20
-#define DECLARATION_LIGNE_COLONNE_INVALID 21
-#define DECLARATION_DOUBLE_SOMMET 22
-#define DECLARATION_SOMMET_NEXISTE_PAS 23
+/* Messages d'erreurs */
+#define CHEMIN_INVALID 10
+#define BALISE_INVALID 11
+#define TYPE_TROP_LONG 12
+#define GRAPH_VIDE 13
+#define NOT_A_NUMBER 14
+#define NOT_A_VALID_DIMENSION 15
+#define MATRICE_MAL_DECLARE 16
+#define MATRICE_INITIALISATION_RATE 17
+#define CROCHET_MAL_PLACE 18
+#define DECLARATION_LIGNE_COLONNE_INVALID 19
+#define DECLARATION_DOUBLE_SOMMET 20
+#define DECLARATION_SOMMET_NEXISTE_PAS 21
 #define SOMMET_NEGATIF 34
 class CFichier
 {

@@ -63,7 +63,7 @@ int main()
 		catch (CException EXCe)
 		{
 			
-			EXCe.EXCAfficherErreur();
+			EXCe.EXCAfficher_Erreur();
 		}
 		
 

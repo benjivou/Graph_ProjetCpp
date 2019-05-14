@@ -28,9 +28,9 @@ public:
 	CStockageElement(int iSommet);
 	~CStockageElement();
 
-	int iSTOLire_Sommet() { return iSommet; };
-	int* piSTOLire_Cibles() { return piArcSortant; };
-	unsigned int uiLire_NBCible() { return uiNBArcSortant; };
+	int STOLire_Sommet() { return iSommet; };
+	int* STOLire_Cibles() { return piArcSortant; };
+	unsigned int Lire_NBCible() { return uiNBArcSortant; };
 
 	void STOAjouter_Arc(int iSommetCible);
 	void STOExiste_T_Il(int iElement);	// permet de savoir si la cible de l'arc existe

@@ -39,7 +39,7 @@ void CString::STREst_Un_Entier(const char * pcValeur)
 /*
  *\brief trouve la première occurrence de cSeparateur dans la pcLigne
  *\param[in] pcLigne Ligne à parser
- *\param[in] cSeparateur éleemnt à chercher
+ *\param[in] cSeparateur élement à chercher
  *\param[out] pointeur sur la nouvelle occurrence, sinon nullptr
  */
 char * CString::STRTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur)
@@ -59,7 +59,7 @@ char * CString::STRTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur)
 
 /**
  *\brief fonction cacher pour tester les balises
- *\param[in] cPrefx	le préfix recherché
+ *\param[in] cPrefix le préfix recherché
  *\param[in] cMot à comparer
  *\param[in] iLongueurPrefix Taille du prefix
  *\param[out] 1 si c'est bon 0 sinon
@@ -72,9 +72,9 @@ int CString::STRDemarre_Avec(const char * cPrefix, const char * cMot, int iLongu
 		int iPosition = 0;
 		/*
 		 * Etats de sorties des 3 tests du while
-		 * Cas 1: On a comparé toutes les caractères du Prefix
-		 * Cas 2: le mot est trop cours
-		 * Cas 3: les caractères ne correspond pas
+		 * Cas 1: On a comparé tous les caractères du Prefix
+		 * Cas 2: le mot est trop court
+		 * Cas 3: les caractères ne correspondent pas
 		 */
 		while (iPosition < iLongueurPrefix && cMot[iPosition] != '\0' && cPrefix[iPosition] == cMot[iPosition])
 		{

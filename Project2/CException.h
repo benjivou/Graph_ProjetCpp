@@ -14,9 +14,9 @@ public:
 	CException(unsigned int uiErreur) { uiEXCErreur = uiErreur; }
 	~CException();
 
-	unsigned int EXCLireErreur() { return uiEXCErreur; }
-	void EXCModifierErreur(unsigned int uiErreur) { uiEXCErreur = uiErreur; }
-	void EXCAfficherErreur();
+	unsigned int EXCLire_Erreur() { return uiEXCErreur; }
+	void EXCModifier_Erreur(unsigned int uiErreur) { uiEXCErreur = uiErreur; }
+	void EXCAfficher_Erreur();
 };
 
 #endif //CEXCEPTION_H
