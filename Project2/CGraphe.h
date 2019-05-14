@@ -6,6 +6,7 @@
 #define ARC_INEXISTANT 33
 #define CIBLE_INEXISTANTE 33
 #define SOMMET_NEGATIF 34
+#define INVALID_NEW_OR_ANCIEN_NUM 35
 class CGraphe
 {
 private :
