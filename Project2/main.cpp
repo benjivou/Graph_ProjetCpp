@@ -33,6 +33,9 @@ int main()
 			buffer->GRASupprimer_Sommet(1);
 			buffer->GRAAfficher_Graphe();
 			
+			cout << endl << "On ajoute un sommet 4" << endl;
+			buffer->GRAAjouter_Sommet(4);
+			buffer->GRAAfficher_Graphe();
 			delete(buffer);
 
 		}
