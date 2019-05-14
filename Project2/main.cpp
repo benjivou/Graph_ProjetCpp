@@ -25,31 +25,44 @@ int main()
 		try
 		{
 			CGraphe *buffer = new CGraphe(ppcFichierTest[i]);
-			buffer->GRAAfficher_Graphe();
-			cout << endl << " Inverser graph " << endl;
-			buffer->GRAInverser_Graph() .GRAAfficher_Graphe();
-			
-			cout << endl << " On retire le sommet 1" << endl;
-			buffer->GRASupprimer_Sommet(1);
-			buffer->GRAAfficher_Graphe();
-			
-			cout << endl << "On ajoute un sommet 4" << endl;
-			buffer->GRAAjouter_Sommet(4);
-			buffer->GRAAfficher_Graphe();
-			
+			try
+			{
+				buffer->GRAAfficher_Graphe();
+				cout << endl << " Inverser graph " << endl;
+				buffer->GRAInverser_Graph().GRAAfficher_Graphe();
 
-			cout << endl << "On ajoute un arc 2->4 " << endl;
-			buffer->GRAAjouter_Arc(2, 4);
-			buffer->GRAAfficher_Graphe();
+				cout << endl << " On retire le sommet 1" << endl;
+				buffer->GRASupprimer_Sommet(1);
+				buffer->GRAAfficher_Graphe();
 
-			cout << endl << "On modifie 2 par 5 " << endl;
-			buffer->GRAModifier_Sommet(2,5);
-			buffer->GRAAfficher_Graphe();
+				cout << endl << "On ajoute un sommet 4" << endl;
+				buffer->GRAAjouter_Sommet(4);
+				buffer->GRAAfficher_Graphe();
 
-			delete(buffer);
+
+				cout << endl << "On ajoute un arc 2->4 " << endl;
+				buffer->GRAAjouter_Arc(2, 4);
+				buffer->GRAAfficher_Graphe();
+
+				cout << endl << "On modifie 2 par 5 " << endl;
+				buffer->GRAModifier_Sommet(2, 5);
+				buffer->GRAAfficher_Graphe();
+
+				cout << endl << "On modifie 3 vers 4 " << endl;
+				buffer->GRAModifier_Arc(3, 4, 4, 5);
+				buffer->GRAAfficher_Graphe();
+				delete(buffer);
+			}
+			catch (CException e)
+			{
+				delete(buffer);
+				throw e;
+			}
+			
 		}
 		catch (CException EXCe)
 		{
+			
 			EXCe.EXCAfficherErreur();
 		}
 		

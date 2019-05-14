@@ -312,9 +312,11 @@ void CGraphe::GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 void CGraphe::GRAModifier_Arc(unsigned int uiAncienDepart, unsigned int uiAncienArrivee, unsigned int uiNouveauDepart, unsigned int uiNouvelleArrivee)
 {
 	/* Recuperation des position de depart des */
-	int iPosDepart = GRAPresence_Sommet(uiAncienDepart);
-	int iPosArrive = GRAPresence_Sommet(uiAncienArrivee);
-	if (iPosArrive > -1 && iPosDepart > -1)
+	int iExisteAncienArc = GRAPresence_Arc(uiAncienDepart, uiAncienArrivee);
+	int iExisteNouveauArc = GRAPresence_Arc(uiNouveauDepart, uiNouvelleArrivee);
+	int iPosArrive;
+	int iPosDepart;
+	if (iExisteAncienArc && !iExisteNouveauArc)
 	{
 		iPosDepart = GRAPresence_Sommet(uiAncienDepart);
 		iPosArrive = GRAPresence_Sommet(uiAncienArrivee);
