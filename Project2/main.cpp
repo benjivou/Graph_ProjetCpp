@@ -36,8 +36,17 @@ int main()
 			cout << endl << "On ajoute un sommet 4" << endl;
 			buffer->GRAAjouter_Sommet(4);
 			buffer->GRAAfficher_Graphe();
-			delete(buffer);
+			
 
+			cout << endl << "On ajoute un arc 2->4 " << endl;
+			buffer->GRAAjouter_Arc(2, 4);
+			buffer->GRAAfficher_Graphe();
+
+			cout << endl << "On modifie 2 par 5 " << endl;
+			buffer->GRAModifier_Sommet(2,5);
+			buffer->GRAAfficher_Graphe();
+
+			delete(buffer);
 		}
 		catch (CException EXCe)
 		{

@@ -84,5 +84,7 @@ void CException::EXCAfficherErreur()
 	case 34:
 		cerr << "Erreur : Somme negatif" << endl;
 		break;
+	case 35:
+		cerr << "Erreur : Modification impossible, le sommet n'existe pas et/ou le nouveau numero existe deja " << endl;
 	}
 }

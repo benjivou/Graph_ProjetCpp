@@ -120,14 +120,89 @@ void CGraphe::GRAAjouter_Sommet(unsigned int uiValeur)
 void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur)
 {
 	
-	unsigned int uiPos = 0;
-	if (GRAPresence_Sommet(uiAncienneValeur) > 0) // Si lélément est bien présent
+	unsigned int uiPos = 0, uiPosArc;
+	unsigned int *puiBuffSortant, *puiBuffEntrant;
+	unsigned int uiTailleArrivant, uiTaillePartant;
+	int iExiste,iPosArc;
+	CArc ** ppARCBuff;
+
+	if (GRAPresence_Sommet(uiAncienneValeur) > -1 ) // Si lélément est bien présent
 	{
 		/* Etape 1 : Recherche du Sommet */
 		while (ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() != uiAncienneValeur)uiPos++;  // Positionne le pointeur 
 
-		/* Etape 2 : modification */
+		
+		/* Etape 2 : recuperation des arcs */
+		uiTailleArrivant = ppSOMGRAListeSommets[uiPos]->SOMLire_TailleArrivant();
+		uiTaillePartant = ppSOMGRAListeSommets[uiPos]->SOMLire_TaillePartant();
+		/* Arrivant */
+		ppARCBuff = ppSOMGRAListeSommets[uiPos]->SOMLire_ArcArrivant(); // Stockage des arcs arrivants
+
+		if ( uiTailleArrivant > 0)
+		{
+			// A : Creation d'un buffer
+			puiBuffEntrant = (unsigned int *)malloc(sizeof(unsigned int) * uiTailleArrivant);
+			
+			// B : Remplissage
+			for ( uiPosArc = 0; uiPosArc < uiTailleArrivant; uiPosArc++)
+			{
+				puiBuffEntrant[uiPosArc] = ppARCBuff[uiPosArc]->ARCLire_Destination();
+			}
+			/* Etape 3 : modification de chaque cible des arcs dans les sommets cibles*/
+		/* Arrivant */
+			for (uiPos = 0; uiPos < uiTailleArrivant; uiPos++)
+			{
+				iExiste = GRAPresence_Sommet(puiBuffEntrant[uiPos]); // recuperation de la position du sommet
+
+				ppARCBuff = ppSOMGRAListeSommets[iExiste]->SOMLire_ArcPartant();
+
+				iPosArc = ppSOMGRAListeSommets[iExiste]->SOMPartant_Existe_T_Il(uiAncienneValeur); // Recup de la position de l'arc
+
+				ppARCBuff[iPosArc]->ARCModifier_Destination(uiNouvelleValeur); // modification
+			}
+			free(puiBuffEntrant);
+		}
+
+		/* PArtant*/
+
+		ppARCBuff = ppSOMGRAListeSommets[uiPos]->SOMLire_ArcPartant(); // Stockage des arcs arrivants
+
+		if (uiTaillePartant > 0)
+		{
+			// A : Creation d'un buffer
+			puiBuffSortant = (unsigned int *)malloc(sizeof(unsigned int) * uiTaillePartant);
+
+			// B : Remplissage
+			for (uiPosArc = 0; uiPosArc < uiTaillePartant; uiPosArc++)
+			{
+				puiBuffSortant[uiPosArc] = ppARCBuff[uiPosArc]->ARCLire_Destination();
+			}
+
+			/* Sortant */
+			for (uiPos = 0; uiPos < uiTaillePartant; uiPos++)
+			{
+				iExiste = GRAPresence_Sommet(puiBuffSortant[uiPos]); // recuperation de la position du sommet
+
+				ppARCBuff = ppSOMGRAListeSommets[iExiste]->SOMLire_ArcArrivant();
+
+				iPosArc = ppSOMGRAListeSommets[iExiste]->SOMArrivant_Existe_T_Il(uiAncienneValeur); // Recup de la position de l'arc
+
+				ppARCBuff[iPosArc]->ARCModifier_Destination(uiNouvelleValeur); // modification
+			}
+			free(puiBuffSortant);
+		}
+
+		
+
+
+		/* Etape 4 : modification du sommet */
 		ppSOMGRAListeSommets[uiPos]->SOMModifier_Numero(uiNouvelleValeur);
+		
+		
+	}
+	else
+	{
+		throw *new CException(INVALID_NEW_OR_ANCIEN_NUM);
 	}
 	
 }
