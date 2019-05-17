@@ -1,6 +1,6 @@
-﻿// main.cpp : Ce fichier contient la fonction 'main'. L'ex�cution du programme commence et se termine � cet endroit.
-// Ex�cuter le programme : Ctrl+F5 ou menu D�boguer > Ex�cuter sans d�bogage
-// D�boguer le programme : F5 ou menu D�boguer > D�marrer le d�bogage
+﻿// main.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
+// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
+// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
 
 #include <iostream>
 #include <stdio.h>
@@ -56,18 +56,12 @@ int main(int argc,char* arg[])
 					delete(pGRAbuffer);
 					throw e;
 				}
-
 			}
 			catch (CException EXCe)
 			{
 				EXCe.EXCAfficher_Erreur();
 			}
-
-
 		}
-	}
-	
-	
-	
+	}		
 	return 0;
 }

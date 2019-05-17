@@ -1,6 +1,9 @@
 
 
-
+/**
+ *\brief Constructeur par défaut qui initialise à 0 les attributs et les pointeurs à nul
+ *\warning : à ne pas utiliser ou une seule fois car les sommets n'accepte pas les doublons
+ */
 CSommet::CSommet()
 {
 	uiSOMNumero = 0;
@@ -12,6 +15,9 @@ CSommet::CSommet()
 
 }
 
+/**
+ *\brief Constructeur de confort d'un sommet qui initialise le numéro du sommet avec une valeur voulue
+ */
 CSommet::CSommet(unsigned int uiNumero)
 {
 	uiSOMNumero = uiNumero;
@@ -24,6 +30,9 @@ CSommet::CSommet(unsigned int uiNumero)
 
 }
 
+/**
+ *\brief Constructeur de recopie d'un sommet
+ */
 CSommet::CSommet(CSommet & SOMParam)
 {
 	uiSOMNumero = SOMParam.uiSOMNumero;			// Copie du numero
@@ -59,7 +68,9 @@ CSommet::CSommet(CSommet & SOMParam)
 	
 }
 
-
+/**
+ *\brief Destructeur d'un sommet qui désalloue les pointeurs sur les arcs arrivants et sortants
+ */
 CSommet::~CSommet()
 {
 	if (ppARCSOMPartant != nullptr)
@@ -79,7 +90,10 @@ CSommet::~CSommet()
 		free(ppARCSOMArrivant);
 	}
 }
-
+/**
+ *\brief L'objectif de cette méthode est d'ajouter un arc dans la liste des arcs arrivants du sommet
+ *\param[in] pARC pointeur sur l'arc à ajouter
+ */
 void CSommet::SOMAjouter_Arc_Arrivant(CArc * pARC)
 {
 	ppARCSOMArrivant == nullptr ?
@@ -91,6 +105,10 @@ void CSommet::SOMAjouter_Arc_Arrivant(CArc * pARC)
 	uiSOMTailleArrivant++;
 }
 
+/**
+ *\brief L'objectif de cette méthode est d'ajouter un arc dans la liste des arcs sortants du sommet
+ *\param[in] pARC pointeur sur l'arc à ajouter
+ */
 void CSommet::SOMAjouter_Arc_Sortant(CArc * pARC)
 {
 	ppARCSOMPartant == nullptr ?
@@ -103,6 +121,10 @@ void CSommet::SOMAjouter_Arc_Sortant(CArc * pARC)
 	uiSOMTaillePartant++;
 }
 
+/**
+ *\brief L'objectif de cette méthode est de retirer un arc dans la liste arrivant d'un sommet
+ *\param[in] uiCible Le numéro du sommet qui retire son arc
+ */
 void CSommet::SOMRetirer_Arc_Arrivant(unsigned int uiCible)
 {
 	int iPosition = SOMArrivant_Existe_T_Il(uiCible); // recupération la position de l'élément
@@ -148,6 +170,10 @@ void CSommet::SOMRetirer_Arc_Arrivant(unsigned int uiCible)
 	}
 }
 
+/**
+ *\brief L'objectif de cette méthode est de retirer un arc dans la liste sortant d'un sommet
+ *\param[in] uiCible Le numéro du sommet qui retire son arc
+ */
 void CSommet::SOMRetirer_Arc_Sortant(unsigned int uiCible)
 {
 	int iPosition = SOMPartant_Existe_T_Il(uiCible); // recupération la position de l'élément
@@ -193,6 +219,11 @@ void CSommet::SOMRetirer_Arc_Sortant(unsigned int uiCible)
 	}
 }
 
+/**
+ *\brief L'objectif de cette méthode est de trouver si uiCible est dans la liste des arcs arrivant d'un sommet
+ *\param[in] uiCible Le numéro de sommet de l'arc arrivant à trouver
+ *\return iPosition la position de la cible ou -1 si la cible n'est pas dans la liste
+ */
 int CSommet::SOMArrivant_Existe_T_Il(unsigned int uiCible)
 {
 	int iPosition = -1;
@@ -206,6 +237,11 @@ int CSommet::SOMArrivant_Existe_T_Il(unsigned int uiCible)
 	return iPosition;
 }
 
+/**
+ *\brief L'objectif de cette méthode est de trouver si uiCible est dans la liste des arcs partant d'un sommet
+ *\param[in] uiCible Le numéro de sommet de l'arc partant à trouver
+ *\return iPosition la position de la cible ou -1 si la cible n'est pas dans la liste
+ */
 int CSommet::SOMPartant_Existe_T_Il(unsigned int uiCible)
 {
 	int iPosition = -1;
@@ -219,9 +255,10 @@ int CSommet::SOMPartant_Existe_T_Il(unsigned int uiCible)
 	return iPosition;
 }
 
-/* 
- *\brief inverse les arcs sortants et entrant, 
- * bien faire attention à l'integrité du Graphe apres les modifications
+
+ /**
+ *\brief Cette méthode inverse les arcs sortants et entrant,
+ * bien faire attention à l'intégrité du Graphe après les modifications
  */
 void CSommet::SOMInverser_Arc()
 {
@@ -239,6 +276,9 @@ void CSommet::SOMInverser_Arc()
 	uiSOMTaillePartant = uiBuffer;
 }
 
+/**
+*\brief Cette méthode affiche le numéro d'un sommet, ses arcs partants et arrivants
+*/
 void CSommet::SOMAfficher_Sommet()
 {
 	unsigned int uiPos;
@@ -266,6 +306,10 @@ void CSommet::SOMAfficher_Sommet()
 	
 }
 
+/**
+*\brief Surcharge de l'opérateur d'affectation
+*\param[in] SOMParam Le sommet à recopier
+*/
 CSommet & CSommet::operator=(CSommet & SOMParam)
 {
 	uiSOMNumero = SOMParam.uiSOMNumero;			// Copie du numero

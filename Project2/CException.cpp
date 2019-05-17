@@ -43,13 +43,13 @@ void CException::EXCAfficher_Erreur()
 		cerr << "Erreur: La valeur de  NbSommet ou NBArc negatif" << endl;
 		break;
 	case 16:
-		cerr << "Erreur: Matrice Mal déclarée" << endl;
+		cerr << "Erreur: Matrice Mal declaree" << endl;
 		break;
 	case 17:
-		cerr << "Erreur: probleme allocation memeoire" << endl;
+		cerr << "Erreur: probleme allocation memoire" << endl;
 		break;
 	case 18:
-		cerr << "Erreur: Syntax erreur : Crochet mal place" << endl;
+		cerr << "Erreur: Syntaxe erreur : Crochet mal place" << endl;
 		break;
 	case 19:
 		cerr << "Erreur: Declaration probleme : Sommet / Arc non declare" << endl;

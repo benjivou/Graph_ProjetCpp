@@ -287,6 +287,14 @@ int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseA
  *\brief son objectif est de trouver si iElement est dans les uiNBElement de piListe
  * -1 n'est pas la sinon return la position
  */
+
+ /**
+  *\brief L'objectif de cette méthode est de trouver si iElement est dans les uiNBElement de piListe
+  *\param[in] iElement L'élément à trouver
+  *\param[in] piListe pointeur sur la liste de sommet
+  *\param[in] uiNBElement est le nombre d'élément dans la liste
+  *\return iRes la position de l'élément ou -1 si l'élément n'est pas dans la liste
+  */
 int CFichier::FICSommet_Existe_T_Il(int iElement, int * piListe, unsigned int uiNBElement ) {
 	unsigned int uiPosition = 0;
 	int iRes = -1;

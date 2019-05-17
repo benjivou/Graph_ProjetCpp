@@ -1,12 +1,18 @@
 #include "CStockageElement.h"
 
 
-
+/**
+*\brief Constructeur par défaut d'un stokage d'élément
+*/
 CStockageElement::CStockageElement()
 {
 	throw(STOCKAGE_VIDE);
 }
 
+/**
+*\brief Constructeur de confort d'un stokage d'élément
+*\param[in] iSommetCible Le sommet à stocker
+*/
 CStockageElement::CStockageElement(int iSommetCible)
 {
 	iSommet = iSommetCible;
@@ -14,7 +20,9 @@ CStockageElement::CStockageElement(int iSommetCible)
 	piArcSortant = nullptr;
 }
 
-
+/**
+*\brief Destructeur par défaut d'un stokage d'élément
+*/
 CStockageElement::~CStockageElement()
 {
 	if (piArcSortant != nullptr)
@@ -23,6 +31,10 @@ CStockageElement::~CStockageElement()
 	}
 }
 
+/**
+*\brief Méthode qui ajoute un arc
+*\param[in] iSommetCible Le sommet à ajouter
+*/
 void CStockageElement::STOAjouter_Arc(int iSommetCible)
 {
 	/*
@@ -55,6 +67,11 @@ void CStockageElement::STOAjouter_Arc(int iSommetCible)
 	piArcSortant[uiNBArcSortant - 1] = iSommetCible;
 }
 
+
+/**
+*\brief Méthode qui regarde si un élément existe dans la liste des arcs sortants
+*\param[in] iElement le numéro du sommet à chercher dans la liste
+*/
 void CStockageElement::STOExiste_T_Il(int iElement)
 {
 	for (unsigned int  uiPosition = 0; uiPosition < uiNBArcSortant; uiPosition++)
@@ -66,6 +83,9 @@ void CStockageElement::STOExiste_T_Il(int iElement)
 	}
 }
 
+/**
+*\brief Méthode qui affiche les arcs sortants d'un sommet
+*/
 void CStockageElement::STOAfficher_Stockage()
 {
 	cout << "Le Sommet : " << iSommet << " est la source de :";

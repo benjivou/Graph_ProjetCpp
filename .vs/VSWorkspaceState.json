@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Project2",
+    "\\Release"
   ],
-  "SelectedNode": "\\hello.txt",
+  "SelectedNode": "\\Project2\\main.cpp",
   "PreviewInSolutionExplorer": false
 }
