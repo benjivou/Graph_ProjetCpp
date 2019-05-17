@@ -3,7 +3,7 @@
 #define CSTRING_H
 
 #include "CException.h"
-#define NOT_A_NUMBER 16
+#define NOT_A_NUMBER 14
 #define MAX_TAILLE_ARG 20		// nombre de caractère dans 1 argument du fichier
 
 class CString

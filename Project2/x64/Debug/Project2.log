@@ -1,9 +1,0 @@
-﻿  CArc.cpp
-  CException.cpp
-  CStockageElement.cpp
-  CString.cpp
-  main.cpp
-c:\users\damie\documents\github\graph_projetcpp\project2\cfichier.h(48): warning C4005: 'NOT_A_NUMBER' : redéfinition de macro
-  c:\users\damie\documents\github\graph_projetcpp\project2\cstring.h(6): note: voir la définition précédente de 'NOT_A_NUMBER'
-  Génération de code en cours...
-  Project2.vcxproj -> C:\Users\damie\Documents\GitHub\Graph_ProjetCpp\x64\Debug\Project2.exe

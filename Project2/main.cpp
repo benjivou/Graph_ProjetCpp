@@ -6,80 +6,68 @@
 #include <stdio.h>
 #include "CGraphe.h"
 
-
 using namespace std;
 
-const char * pcFicherValide = "Fichier_Valide.txt";
-const char * pcFicherInvalide1 = "Fichier_NBSommet_Negatif.txt";
-const char * pcFicherInvalide2 = "Fichier_Ligne_Vides.txt";
-const char * pcFicherInvalide3 = "Fichier_coordonne_Doublés.txt";
-const char * pcFicherInvalide4 = "Fichier_Arc_Manquant.txt";
-
-const char  *ppcFichierTest[] = {pcFicherValide,pcFicherInvalide1 , pcFicherInvalide2 , pcFicherInvalide3 ,pcFicherInvalide4 };
-int main()
+int main(int argc,char* arg[])
 {
-	cout << "Hello World !" << endl;
-	// test Cfichier
-	for (size_t i = 0; i < 5; i++)
+	CGraphe *pGRAbuffer;
+	unsigned uiPos,uiNbArg;
+	if (argc < 1)
 	{
-		try
+		cerr << "Pas suffisament d'arguments";
+	}
+	else {
+		uiNbArg = (unsigned int)argc;
+		for (uiPos= 1; uiPos < uiNbArg; uiPos++)
 		{
-			CGraphe *buffer = new CGraphe(ppcFichierTest[i]);
 			try
 			{
-				buffer->GRAAfficher_Graphe();
-				cout << endl << " Inverser graph " << endl;
-				buffer->GRAInverser_Graph().GRAAfficher_Graphe();
+				pGRAbuffer = new CGraphe(arg[uiPos]);
+				try
+				{
+					pGRAbuffer->GRAAfficher_Graphe();
+					cout << endl << " Inverser graph " << endl;
+					pGRAbuffer->GRAInverser_Graph().GRAAfficher_Graphe();
 
-				cout << endl << " On retire le sommet 1" << endl;
-				buffer->GRASupprimer_Sommet(1);
-				buffer->GRAAfficher_Graphe();
+					cout << endl << " On retire le sommet 1" << endl;
+					pGRAbuffer->GRASupprimer_Sommet(1);
+					pGRAbuffer->GRAAfficher_Graphe();
 
-				cout << endl << "On ajoute un sommet 4" << endl;
-				buffer->GRAAjouter_Sommet(4);
-				buffer->GRAAfficher_Graphe();
+					cout << endl << "On ajoute un sommet 4" << endl;
+					pGRAbuffer->GRAAjouter_Sommet(4);
+					pGRAbuffer->GRAAfficher_Graphe();
 
 
-				cout << endl << "On ajoute un arc 2->4 " << endl;
-				buffer->GRAAjouter_Arc(2, 4);
-				buffer->GRAAfficher_Graphe();
+					cout << endl << "On ajoute un arc 2->4 " << endl;
+					pGRAbuffer->GRAAjouter_Arc(2, 4);
+					pGRAbuffer->GRAAfficher_Graphe();
 
-				cout << endl << "On modifie 2 par 5 " << endl;
-				buffer->GRAModifier_Sommet(2, 5);
-				buffer->GRAAfficher_Graphe();
+					cout << endl << "On modifie 2 par 5 " << endl;
+					pGRAbuffer->GRAModifier_Sommet(2, 5);
+					pGRAbuffer->GRAAfficher_Graphe();
 
-				cout << endl << "On modifie 3 vers 4 " << endl;
-				buffer->GRAModifier_Arc(3, 4, 4, 5);
-				buffer->GRAAfficher_Graphe();
-				delete(buffer);
+					cout << endl << "On modifie l'arc 3 vers 4 " << endl;
+					pGRAbuffer->GRAModifier_Arc(3, 4, 4, 5);
+					pGRAbuffer->GRAAfficher_Graphe();
+					delete(pGRAbuffer);
+				}
+				catch (CException e)
+				{
+					delete(pGRAbuffer);
+					throw e;
+				}
+
 			}
-			catch (CException e)
+			catch (CException EXCe)
 			{
-				delete(buffer);
-				throw e;
+				EXCe.EXCAfficher_Erreur();
 			}
-			
-		}
-		catch (CException EXCe)
-		{
-			
-			EXCe.EXCAfficher_Erreur();
-		}
-		
 
+
+		}
 	}
-	/*
-	// Test Arc
-	CArc *c1 = new CArc(1);
-	CArc *c2 = new CArc(2);
-
-	//Test CSommet
-	CSommet *sommet1 = new CSommet(1);
-	CSommet *sommet2 = new CSommet(2);
-	CSommet *sommet3 = new CSommet(3);
-	CSommet *sommet4 = new CSommet(*sommet3);
-	*sommet1 = *sommet3;
-	//sommet1->SOMAfficher_Sommet();*/
-	getchar();
+	
+	
+	
 	return 0;
 }
