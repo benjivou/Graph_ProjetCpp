@@ -1,4 +1,10 @@
 #include "CString.h"
+/*
+ * \brief ne fait rien
+ */
+CString::CString()
+{
+}
 
 /*
  * \brief commportement identique à strLength() en C

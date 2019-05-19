@@ -9,10 +9,11 @@
 class CString
 {
 public:
-	static unsigned int STRLongueur_De_Chaine(const char *);
-	static void STREst_Un_Entier(const char* pcValeur);
-	static char* STRTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);
-	static int STRDemarre_Avec(const char* cPrefix, const char* cMot, int iLongueurPrefix);
-	static int STRCopie_String(char *pcSrc, char* pcDest);
+	CString();
+	unsigned int STRLongueur_De_Chaine(const char *);
+	void STREst_Un_Entier(const char* pcValeur);
+	char* STRTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);
+	int STRDemarre_Avec(const char* cPrefix, const char* cMot, int iLongueurPrefix);
+	int STRCopie_String(char *pcSrc, char* pcDest);
 };
 #endif // !CSTRING_H

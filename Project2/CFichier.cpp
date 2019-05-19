@@ -40,7 +40,7 @@ CFichier::CFichier(const char * cAdresse)
 	
 
 
-	
+	CString STRAction;
 
 	unsigned int uiLigne = 0;		// donne la ligne du fichier en cours d'étude
 	char pcLine[MAX_LONGUEUR_LINE];	// ligne d'argument pour créer la matrice
@@ -76,7 +76,7 @@ CFichier::CFichier(const char * cAdresse)
 		while (uiLigne < NB_BALISE && fgets(pcLine, MAX_LONGUEUR_LINE, pfFile) != NULL)
 		{
 			/* test qui détermine, qui permet de passer à la ligne suivante si on a un ']' */
-			if (CString::STRDemarre_Avec("]", pcLine, MAX_LONGUEUR_LINE) == 1)
+			if (STRAction.STRDemarre_Avec("]", pcLine, MAX_LONGUEUR_LINE) == 1)
 			{
 				uiLigne++;
 				
@@ -87,7 +87,7 @@ CFichier::CFichier(const char * cAdresse)
 			/* test de la balise */
 
 			// balise invalide
-			if (CString::STRDemarre_Avec(ppcTestBaliseParametrique[uiLigne], pcLine, MAX_LONGUEUR_LINE) == 0  )
+			if (STRAction.STRDemarre_Avec(ppcTestBaliseParametrique[uiLigne], pcLine, MAX_LONGUEUR_LINE) == 0  )
 			{
 				fclose(pfFile);
 				CException EXCBalise_Invalid(BALISE_INVALID);
@@ -243,7 +243,7 @@ int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseA
 	{
 		throw(CException(ERREUR_REALLOC));
 	}
-	
+	CString STRAction;// modifieur
 	/*
 	 *Etape 1 : Récupération
 	 */
@@ -255,15 +255,15 @@ int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseA
 		while (uiNumBalise < uiNBdeBalise)
 		{
 			/* Phase 1 : fermeture de chaine */
-			pcCurseur = CString::STRTrouve_Premiere_Occurrence(pcLigne, ','); // positionnement 
+			pcCurseur = STRAction.STRTrouve_Premiere_Occurrence(pcLigne, ','); // positionnement 
 			if (pcCurseur != nullptr) *pcCurseur = '\0';			 // fermeture si besoin
 			
 			/* phase 2 : positionner le pointeur sur l'élément à convertir */
-			pcLigne = CString::STRTrouve_Premiere_Occurrence(pcLigne, '=') + 1;
+			pcLigne = STRAction.STRTrouve_Premiere_Occurrence(pcLigne, '=') + 1;
 			
 			/* phase 3 : recup et stockage */
 			
-			CString::STREst_Un_Entier(pcLigne);
+			STRAction.STREst_Un_Entier(pcLigne);
 			
 			piResultat[uiNumBalise] = atoi(pcLigne);
 
