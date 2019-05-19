@@ -121,6 +121,7 @@
     <ClInclude Include="CGraphe.h" />
     <ClInclude Include="CSommet.h" />
     <ClInclude Include="CStockageElement.h" />
+    <ClInclude Include="CString.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />

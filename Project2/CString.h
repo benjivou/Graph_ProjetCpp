@@ -10,6 +10,7 @@ class CString
 {
 public:
 	CString();
+	~CString();
 	unsigned int STRLongueur_De_Chaine(const char *);
 	void STREst_Un_Entier(const char* pcValeur);
 	char* STRTrouve_Premiere_Occurrence(char * pcLigne, char cSeparateur);

@@ -7,6 +7,14 @@ CString::CString()
 }
 
 /*
+ * \brief ne fait rien
+ */
+CString::~CString()
+{
+
+}
+
+/*
  * \brief commportement identique à strLength() en C
  */
 unsigned int CString::STRLongueur_De_Chaine(const char * pcChaine)
