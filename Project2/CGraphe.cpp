@@ -1,5 +1,5 @@
 /**
- *\brief Constructeur par défaut d'un graphe
+ *\brief Constructeur par dï¿½faut d'un graphe
  */
 CGraphe::CGraphe()
 {
@@ -9,47 +9,47 @@ CGraphe::CGraphe()
 }
 
 /**
- *\brief Constructeur qui initialise un graphe à l'aide d'un fichier
+ *\brief Constructeur qui initialise un graphe ï¿½ l'aide d'un fichier
 */
 CGraphe::CGraphe(const char * pcFichier) {
-	/* Etape 1 : récupération des données */
+	/* Etape 1 : rï¿½cupï¿½ration des donnï¿½es */
 	CFichier *pFICDonnees = new CFichier(pcFichier);
 
-	/* Etape 2 : Stockage des données */
+	/* Etape 2 : Stockage des donnï¿½es */
 	uiGRANombreDArc = pFICDonnees->FICLire_NBArc();
 	uiGRANombreDeSommets = pFICDonnees->FICLire_NBSommet();
 	CStockageElement ** ppSTOListeDuGraph = pFICDonnees->FICLire_ppSTOFICStockage();
 
-	unsigned int *puiBufferArc;		// récupère les arcs sortants et rentrant si besoin
+	unsigned int *puiBufferArc;		// rï¿½cupï¿½re les arcs sortants et rentrant si besoin
 	unsigned int uiBufferPosition;	// permet de remplir les arcs sortants
 
-	/* Etape 3 : Génération de sommets */
+	/* Etape 3 : Gï¿½nï¿½ration de sommets */
 
-	ppSOMGRAListeSommets = (CSommet **)malloc(sizeof(void *) * uiGRANombreDeSommets); // Création d'un tableau pour stocker les CSommets
-	/* Stockage \ génération */
+	ppSOMGRAListeSommets = (CSommet **)malloc(sizeof(void *) * uiGRANombreDeSommets); // Crï¿½ation d'un tableau pour stocker les CSommets
+	/* Stockage \ gï¿½nï¿½ration */
 	for (unsigned int uiPos = 0; uiPos < uiGRANombreDeSommets; uiPos++)
 	{
 		ppSOMGRAListeSommets[uiPos] = new CSommet(ppSTOListeDuGraph[uiPos]->STOLire_Sommet());
 	}
 
-	/* Etape 4 : Génération des Arcs */
-	/* Déplacement dans la liste des sommets du CFichier*/
+	/* Etape 4 : Gï¿½nï¿½ration des Arcs */
+	/* Dï¿½placement dans la liste des sommets du CFichier*/
 	for (unsigned int uiPosSommet = 0; uiPosSommet < uiGRANombreDeSommets; uiPosSommet++)
 	{
 
-		// Si on a bien des arcs sortant 
+		// Si on a bien des arcs sortant
 		if (ppSTOListeDuGraph[uiPosSommet]->Lire_NBCible() > 0)
 		{
 			uiBufferPosition = 0;
-			// récupération des sommets sortants
+			// rï¿½cupï¿½ration des sommets sortants
 			puiBufferArc = (unsigned int *)ppSTOListeDuGraph[uiPosSommet]->STOLire_Cibles();
 
 			// On rempli le sommet avec les arcs
 			for (unsigned int uiPosArc = 0; uiPosArc < ppSTOListeDuGraph[uiPosSommet]->Lire_NBCible(); uiPosArc++)
 			{
-				ppSOMGRAListeSommets[uiPosSommet]->SOMAjouter_Arc_Sortant(new CArc(puiBufferArc[uiPosArc])); // remplissage des sommets sortants 
+				ppSOMGRAListeSommets[uiPosSommet]->SOMAjouter_Arc_Sortant(new CArc(puiBufferArc[uiPosArc])); // remplissage des sommets sortants
 
-				// On doit rechercher le sommet cible 
+				// On doit rechercher le sommet cible
 				while (ppSOMGRAListeSommets[uiBufferPosition]->SOMLire_Numero() != puiBufferArc[uiPosArc]) ++uiBufferPosition;
 
 				// On rempli le sommet cible
@@ -87,7 +87,7 @@ CGraphe::CGraphe(CGraphe & GRPParam)
 }
 
 /**
- *\brief Destructeur par défaut d'un graphe
+ *\brief Destructeur par dï¿½faut d'un graphe
  */
 CGraphe::~CGraphe()
 {
@@ -98,7 +98,7 @@ CGraphe::~CGraphe()
 }
 
 /**
- *\brief Méthode qui affiche un graphe (nombre d'arc, de sommet, etc)
+ *\brief Mï¿½thode qui affiche un graphe (nombre d'arc, de sommet, etc)
  */
 void CGraphe::GRAAfficher_Graphe()
 {
@@ -111,24 +111,24 @@ void CGraphe::GRAAfficher_Graphe()
 }
 
 /**
- *\brief rempli la matrice du cfichier avec une ligne d'élément
+ *\brief rempli la matrice du cfichier avec une ligne d'ï¿½lï¿½ment
  */
 void CGraphe::GRAAjouter_Sommet(unsigned int uiValeur)
 {
 	int iPos = GRAPresence_Sommet(uiValeur);
-	if (iPos == -1) // le sommet n'existe pas 
+	if (iPos == -1) // le sommet n'existe pas
 	{
-		CSommet * sommet = new CSommet(uiValeur); // création du nouveau sommet
+		CSommet * sommet = new CSommet(uiValeur); // crï¿½ation du nouveau sommet
 		ppSOMGRAListeSommets = (CSommet**)realloc(ppSOMGRAListeSommets, (uiGRANombreDeSommets + 1) * sizeof(CSommet)); // reallocation memoire
-		ppSOMGRAListeSommets[uiGRANombreDeSommets] = sommet; // ajout de l'élément
+		ppSOMGRAListeSommets[uiGRANombreDeSommets] = sommet; // ajout de l'ï¿½lï¿½ment
 		uiGRANombreDeSommets++;	// Sauvegarde du nombre
 	}
 }
 
 /**
- *\brief Méthode qui modifie un sommet
- *\param[in] uiAncienneValeur le numéro du sommet à modifier
- *\param[in] uiNouvelleValeur le nouveau numéro du sommet
+ *\brief Mï¿½thode qui modifie un sommet
+ *\param[in] uiAncienneValeur le numï¿½ro du sommet ï¿½ modifier
+ *\param[in] uiNouvelleValeur le nouveau numï¿½ro du sommet
  */
 void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiNouvelleValeur)
 {
@@ -138,13 +138,13 @@ void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiN
 	int iExiste, iPosArc;
 	CArc ** ppARCBuff;
 
-	if (GRAPresence_Sommet(uiAncienneValeur) > -1) // Si l'élément est bien présent
+	if (GRAPresence_Sommet(uiAncienneValeur) > -1) // Si l'ï¿½lï¿½ment est bien prï¿½sent
 	{
 		/* Etape 1 : Recherche du Sommet */
-		while (ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() != uiAncienneValeur)uiPos++;  // Positionne le pointeur 
+		while (ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() != uiAncienneValeur)uiPos++;  // Positionne le pointeur
 
 
-		/* Etape 2 : récupération des arcs */
+		/* Etape 2 : rï¿½cupï¿½ration des arcs */
 		uiTailleArrivant = ppSOMGRAListeSommets[uiPos]->SOMLire_TailleArrivant();
 		uiTaillePartant = ppSOMGRAListeSommets[uiPos]->SOMLire_TaillePartant();
 
@@ -153,7 +153,7 @@ void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiN
 
 		if (uiTailleArrivant > 0)
 		{
-			// A : Création d'un buffer
+			// A : Crï¿½ation d'un buffer
 			puiBuffEntrant = (unsigned int *)malloc(sizeof(unsigned int) * uiTailleArrivant);
 
 			// B : Remplissage
@@ -165,11 +165,11 @@ void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiN
 		/* Arrivant */
 			for (uiPos = 0; uiPos < uiTailleArrivant; uiPos++)
 			{
-				iExiste = GRAPresence_Sommet(puiBuffEntrant[uiPos]); // récupération de la position du sommet
+				iExiste = GRAPresence_Sommet(puiBuffEntrant[uiPos]); // rï¿½cupï¿½ration de la position du sommet
 
 				ppARCBuff = ppSOMGRAListeSommets[iExiste]->SOMLire_ArcPartant();
 
-				iPosArc = ppSOMGRAListeSommets[iExiste]->SOMPartant_Existe_T_Il(uiAncienneValeur); // récupération de la position de l'arc
+				iPosArc = ppSOMGRAListeSommets[iExiste]->SOMPartant_Existe_T_Il(uiAncienneValeur); // rï¿½cupï¿½ration de la position de l'arc
 
 				ppARCBuff[iPosArc]->ARCModifier_Destination(uiNouvelleValeur); // modification
 			}
@@ -194,11 +194,11 @@ void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiN
 			/* Sortant */
 			for (uiPos = 0; uiPos < uiTaillePartant; uiPos++)
 			{
-				iExiste = GRAPresence_Sommet(puiBuffSortant[uiPos]); // récupération de la position du sommet
+				iExiste = GRAPresence_Sommet(puiBuffSortant[uiPos]); // rï¿½cupï¿½ration de la position du sommet
 
 				ppARCBuff = ppSOMGRAListeSommets[iExiste]->SOMLire_ArcArrivant();
 
-				iPosArc = ppSOMGRAListeSommets[iExiste]->SOMArrivant_Existe_T_Il(uiAncienneValeur); // récupération de la position de l'arc
+				iPosArc = ppSOMGRAListeSommets[iExiste]->SOMArrivant_Existe_T_Il(uiAncienneValeur); // rï¿½cupï¿½ration de la position de l'arc
 
 				ppARCBuff[iPosArc]->ARCModifier_Destination(uiNouvelleValeur); // modification
 			}
@@ -209,19 +209,19 @@ void CGraphe::GRAModifier_Sommet(unsigned int uiAncienneValeur, unsigned int uiN
 	}
 	else
 	{
-		throw *new CException(INVALID_NEW_OR_ANCIEN_NUM);
+		throw (CException(INVALID_NEW_OR_ANCIEN_NUM));
 	}
 }
 
 /**
- *\brief Méthode qui supprime un sommet ainsi que les arcs liés à ce sommet
- *\param[in] uiValeur le numéro du sommet à supprimer
+ *\brief Mï¿½thode qui supprime un sommet ainsi que les arcs liï¿½s ï¿½ ce sommet
+ *\param[in] uiValeur le numï¿½ro du sommet ï¿½ supprimer
  */
 void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 {
-	unsigned int uiPosNouvelle = 0;	// curseur de la nouvelle boucle 
-	unsigned int uiPosAncienne; // curseur dans l'anienne liste de sommet 
-	unsigned int uiPosElementAEnlever;// posittion du sommet uiValeur 
+	unsigned int uiPosNouvelle = 0;	// curseur de la nouvelle boucle
+	unsigned int uiPosAncienne; // curseur dans l'anienne liste de sommet
+	unsigned int uiPosElementAEnlever;// posittion du sommet uiValeur
 	unsigned int uiNBPartant;
 	unsigned int uiNBArrivant;
 	int iEstPresent;
@@ -230,8 +230,8 @@ void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 
 	iEstPresent = GRAPresence_Sommet(uiValeur);
 
-	/* Etape 0 : L'élément existe - t - il?*/
-	if (iEstPresent > -1) // présence de lélément
+	/* Etape 0 : L'ï¿½lï¿½ment existe - t - il?*/
+	if (iEstPresent > -1) // prï¿½sence de lï¿½lï¿½ment
 	{
 		uiPosElementAEnlever = (unsigned int)iEstPresent;
 		/* Etape 1: Allocation de la nouvelle zone memoire */
@@ -240,7 +240,7 @@ void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 		/* Etape 2: Recopie */
 		for (uiPosAncienne = 0; uiPosAncienne < uiGRANombreDeSommets; uiPosAncienne++)
 		{
-			/* Etape 2.1 : Element à supprimer*/
+			/* Etape 2.1 : Element ï¿½ supprimer*/
 			if (uiPosAncienne == uiPosElementAEnlever)
 			{
 				uiNBPartant = ppSOMGRAListeSommets[uiPosElementAEnlever]->SOMLire_TaillePartant();
@@ -271,7 +271,7 @@ void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 					GRASupprimer_Arc(ppARCBufferCible[uiPos]->ARCLire_Destination(), uiValeur);
 				}
 
-				/* Etape 2.1.C : Libéré le sommet */
+				/* Etape 2.1.C : Libï¿½rï¿½ le sommet */
 				delete ppSOMGRAListeSommets[uiPosAncienne];
 			}
 			/* Etape 2.2 : Recopie */
@@ -281,7 +281,7 @@ void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 				uiPosNouvelle++;
 			}
 		}
-		/* Etape 3: Sauvegarde des nouveaux paramétre et libération de l'ancienne chaine */
+		/* Etape 3: Sauvegarde des nouveaux paramï¿½tre et libï¿½ration de l'ancienne chaine */
 		uiGRANombreDeSommets = uiPosNouvelle;
 		free(ppSOMGRAListeSommets);
 		ppSOMGRAListeSommets = ppSOMBuffer;
@@ -290,8 +290,8 @@ void CGraphe::GRASupprimer_Sommet(unsigned int uiValeur)
 }
 
 /**
-*\brief Méthode qui regarde si un sommet existe
-*\param[in] uiValeur le numéro du sommet à chercher
+*\brief Mï¿½thode qui regarde si un sommet existe
+*\param[in] uiValeur le numï¿½ro du sommet ï¿½ chercher
 *\param[out] retourne la position dans le tableau
 */
 int CGraphe::GRAPresence_Sommet(unsigned int uiValeur)
@@ -299,7 +299,7 @@ int CGraphe::GRAPresence_Sommet(unsigned int uiValeur)
 	int iPositionValeur = -1;
 	unsigned int uiPos = 0;
 
-	// positionnement 
+	// positionnement
 	while (iPositionValeur < 0 && uiGRANombreDeSommets > uiPos)
 	{
 		ppSOMGRAListeSommets[uiPos]->SOMLire_Numero() != uiValeur ? uiPos++ : iPositionValeur = uiPos;
@@ -309,9 +309,9 @@ int CGraphe::GRAPresence_Sommet(unsigned int uiValeur)
 }
 
 /**
-*\brief Méthode qui ajoute un arc
-*\param[in] uiDepart le numéro du sommet départ
-*\param[in] uiArrivee le numéro du sommet arrivée
+*\brief Mï¿½thode qui ajoute un arc
+*\param[in] uiDepart le numï¿½ro du sommet dï¿½part
+*\param[in] uiArrivee le numï¿½ro du sommet arrivï¿½e
 */
 void CGraphe::GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 {
@@ -329,11 +329,11 @@ void CGraphe::GRAAjouter_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 }
 
 /**
-*\brief Méthode qui modifie un arc
-*\param[in] uiAncienDepart le numéro du sommet départ à modifier
-*\param[in] uiAncienArrivee le numéro du sommet arrivée à modifier
-*\param[in] uiNouveauDepart le nouveau numéro du sommet départ de l'arc
-*\param[in] uiNouvelleArrivee le nouveau numéro du sommet arrivée de l'arc
+*\brief Mï¿½thode qui modifie un arc
+*\param[in] uiAncienDepart le numï¿½ro du sommet dï¿½part ï¿½ modifier
+*\param[in] uiAncienArrivee le numï¿½ro du sommet arrivï¿½e ï¿½ modifier
+*\param[in] uiNouveauDepart le nouveau numï¿½ro du sommet dï¿½part de l'arc
+*\param[in] uiNouvelleArrivee le nouveau numï¿½ro du sommet arrivï¿½e de l'arc
 */
 void CGraphe::GRAModifier_Arc(unsigned int uiAncienDepart, unsigned int uiAncienArrivee, unsigned int uiNouveauDepart, unsigned int uiNouvelleArrivee)
 {
@@ -350,24 +350,24 @@ void CGraphe::GRAModifier_Arc(unsigned int uiAncienDepart, unsigned int uiAncien
 		{
 			/* Destruction */
 			GRASupprimer_Arc(uiAncienDepart, uiAncienArrivee);
-			/* Création */
+			/* Crï¿½ation */
 			GRAAjouter_Arc(uiNouveauDepart, uiNouvelleArrivee);
 		}
 		else
 		{
-			throw(*new CException(CIBLE_INEXISTANTE));
+			throw(CException(CIBLE_INEXISTANTE));
 		}
 	}
 	else
 	{
-		throw(*new CException(ARC_INEXISTANT));
+		throw(CException(ARC_INEXISTANT));
 	}
 }
 
 /**
-*\brief Méthode qui suprime un arc
-*\param[in] uiDepart le numéro du sommet départ de l'arc à supprimer
-*\param[in] uiArrivee le numéro du sommet arrivée de l'arc à supprimer
+*\brief Mï¿½thode qui suprime un arc
+*\param[in] uiDepart le numï¿½ro du sommet dï¿½part de l'arc ï¿½ supprimer
+*\param[in] uiArrivee le numï¿½ro du sommet arrivï¿½e de l'arc ï¿½ supprimer
 */
 void CGraphe::GRASupprimer_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 {
@@ -383,16 +383,16 @@ void CGraphe::GRASupprimer_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 }
 
 /**
-*\brief Méthode qui cherche la présence d'un arc de la graphe
-*\param[in] uiDepart le numéro du sommet départ de l'arc à trouver
-*\param[in] uiArrivee le numéro du sommet arrivée de l'arc à trouver
+*\brief Mï¿½thode qui cherche la prï¿½sence d'un arc de la graphe
+*\param[in] uiDepart le numï¿½ro du sommet dï¿½part de l'arc ï¿½ trouver
+*\param[in] uiArrivee le numï¿½ro du sommet arrivï¿½e de l'arc ï¿½ trouver
 *\param[out] return 1 si l'arc existe, 0 sinon
 */
 int CGraphe::GRAPresence_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 {
-	int iExisteArc = 0; // variable de retour 
+	int iExisteArc = 0; // variable de retour
 
-	int iPosSomDepart = GRAPresence_Sommet(uiDepart); // check du sommet de depart 
+	int iPosSomDepart = GRAPresence_Sommet(uiDepart); // check du sommet de depart
 	if (iPosSomDepart > -1)
 	{
 		if (ppSOMGRAListeSommets[iPosSomDepart]->SOMArrivant_Existe_T_Il(uiArrivee) != -1)
@@ -406,8 +406,8 @@ int CGraphe::GRAPresence_Arc(unsigned int uiDepart, unsigned int uiArrivee)
 }
 
 /**
-*\brief Méthode qui inverse un graphe (inverse les sommets et les arcs)
-*\param[out] retourne le graphe inversé
+*\brief Mï¿½thode qui inverse un graphe (inverse les sommets et les arcs)
+*\param[out] retourne le graphe inversï¿½
 */
 CGraphe& CGraphe::GRAInverser_Graph()
 {

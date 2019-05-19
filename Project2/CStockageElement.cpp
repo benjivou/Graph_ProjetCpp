@@ -61,7 +61,7 @@ void CStockageElement::STOAjouter_Arc(int iSommetCible)
 	}
 	
 	// Erreur : Allocation memoire 
-	if (piArcSortant == nullptr) throw(new CException(ERREUR_REALLOC));
+	if (piArcSortant == nullptr) throw(CException(ERREUR_REALLOC));
 	
 	// Remplissage 
 	piArcSortant[uiNBArcSortant - 1] = iSommetCible;
@@ -78,7 +78,7 @@ void CStockageElement::STOExiste_T_Il(int iElement)
 	{
 		if (iElement == piArcSortant[uiPosition])
 		{
-			throw(new CException(CETTE_ELEMENT_EXISTE_DEJA));
+			throw(CException(CETTE_ELEMENT_EXISTE_DEJA));
 		}
 	}
 }

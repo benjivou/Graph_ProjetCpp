@@ -99,7 +99,7 @@ void CSommet::SOMAjouter_Arc_Arrivant(CArc * pARC)
 	ppARCSOMArrivant == nullptr ?
 		ppARCSOMArrivant = (CArc **) malloc(sizeof(void*)) :											// premier element
 		ppARCSOMArrivant = (CArc **) realloc(ppARCSOMArrivant, sizeof(void*) * (uiSOMTailleArrivant+1));// autres elements
-	if (ppARCSOMArrivant == nullptr) throw(*new CException(REALLOC_PROBLEME));
+	if (ppARCSOMArrivant == nullptr) throw(CException(REALLOC_PROBLEME));
 
 	ppARCSOMArrivant[uiSOMTailleArrivant] = pARC; // Stockage 
 	uiSOMTailleArrivant++;
@@ -115,7 +115,7 @@ void CSommet::SOMAjouter_Arc_Sortant(CArc * pARC)
 		ppARCSOMPartant = (CArc **)malloc(sizeof(void*)) :											// premier element
 		ppARCSOMPartant = (CArc **)realloc(ppARCSOMPartant, sizeof(void*) * (uiSOMTaillePartant + 1));// autres elements
 
-	if (ppARCSOMPartant == nullptr) throw(*new CException(REALLOC_PROBLEME));
+	if (ppARCSOMPartant == nullptr) throw(CException(REALLOC_PROBLEME));
 
 	ppARCSOMPartant[uiSOMTaillePartant] = pARC; // Stockage 
 	uiSOMTaillePartant++;

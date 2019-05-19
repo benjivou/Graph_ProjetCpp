@@ -27,8 +27,8 @@ void CString::STREst_Un_Entier(const char * pcValeur)
 
 	if (pcValeur[uiPos] != '\n' &&  pcValeur[uiPos] != '\0')
 	{
-		CException *pEXCErreur = new CException(NOT_A_NUMBER);
-		throw(*pEXCErreur);
+		
+		throw(CException(NOT_A_NUMBER));
 	}
 }
 

@@ -4,7 +4,7 @@
  */
 CFichier::CFichier()
 {
-	throw(*new CException(BALISE_INVALID));
+	throw(CException(BALISE_INVALID));
 }
 
 
@@ -82,7 +82,7 @@ CFichier::CFichier(const char * cAdresse)
 				
 				// 4 : c'est la fin des sommets, 6 :Fin des Arcs
 				if (uiLigne == 4 || uiLigne == 6) continue;
-				else throw (*new CException(CROCHET_MAL_PLACE));
+				else throw (CException(CROCHET_MAL_PLACE));
 			}
 			/* test de la balise */
 
@@ -102,22 +102,22 @@ CFichier::CFichier(const char * cAdresse)
 				case 0: // balise Sommet
 					piBuffer = (FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne , 1));	// récupération
 
-					if (piBuffer[0] < 0) throw(*new CException(NOT_A_VALID_DIMENSION)); // intialisation avec des valeurs négatives
+					if (piBuffer[0] < 0) throw(CException(NOT_A_VALID_DIMENSION)); // intialisation avec des valeurs négatives
 					
 					uiNBSommet = (unsigned int) piBuffer[0]; // stockage
 					free(piBuffer);	//vidange
 					
 					if (uiNBSommet == 0)
 					{
-						throw(*new CException(GRAPH_VIDE));
+						throw(CException(GRAPH_VIDE));
 					}
 					// Génération des Lignes
 					ppSTOFICStockage = (CStockageElement **) malloc(sizeof(void *) * uiNBSommet);
 
-					if (ppSTOFICStockage == nullptr) throw(*new CException(MATRICE_INITIALISATION_RATE));
+					if (ppSTOFICStockage == nullptr) throw(CException(MATRICE_INITIALISATION_RATE));
 					
 					piListeSommet = (int *) malloc(sizeof(int) * uiNBSommet);
-					if (piListeSommet == nullptr) throw(*new CException(MATRICE_INITIALISATION_RATE));
+					if (piListeSommet == nullptr) throw(CException(MATRICE_INITIALISATION_RATE));
 
 					uiLigne++; // Déplacement du pointeur
 					break;
@@ -125,7 +125,7 @@ CFichier::CFichier(const char * cAdresse)
 					
 					piBuffer =FICRecup_Ligne_Argument(pcLine, ppcTestBaliseParametrique + uiLigne, 1);	// récupération
 
-					if (piBuffer[0] < 0) throw(*new CException(NOT_A_VALID_DIMENSION));
+					if (piBuffer[0] < 0) throw(CException(NOT_A_VALID_DIMENSION));
 
 					uiNBArc = (unsigned int) piBuffer[0]; // stockage
 					free(piBuffer);	//vidange
@@ -143,7 +143,7 @@ CFichier::CFichier(const char * cAdresse)
 					uiBufferPosition = uiFICNBSommet; // Donne la Ligne cible de la matrice ppdStockage
 
 					// Erreur : Ligne non déclarée
-					if (uiBufferPosition >= uiNBSommet) throw(  *new CException(DECLARATION_LIGNE_COLONNE_INVALID));
+					if (uiBufferPosition >= uiNBSommet) throw(  CException(DECLARATION_LIGNE_COLONNE_INVALID));
 					
 
 					/* Etape 2 : Récupération de la valeur et stockage sur la première ligne*/
@@ -153,12 +153,12 @@ CFichier::CFichier(const char * cAdresse)
 					// erreur Sommet négatif
 					if (iBufSommet < 0)
 					{
-						throw(*new CException(SOMMET_NEGATIF));
+						throw(CException(SOMMET_NEGATIF));
 					}
 					/* Etape 3 : Test de l'existence de ce sommet*/
 					FICSommet_Existe_T_Il(iBufSommet, piListeSommet, uiBufferPosition) == -1?
 						piListeSommet[uiBufferPosition] = iBufSommet : // stockage du nouveau sommet
-						throw(*new CException(DECLARATION_DOUBLE_SOMMET));
+						throw(CException(DECLARATION_DOUBLE_SOMMET));
 
 					/* Etape 3 : Stockage */
 					ppSTOFICStockage[uiBufferPosition] = new CStockageElement(iBufSommet);
@@ -178,7 +178,7 @@ CFichier::CFichier(const char * cAdresse)
 					
 
 					// Erreur : Ligne non déclarée
-					if (uiBufferPosition >= uiNBArc) throw(*new CException(DECLARATION_LIGNE_COLONNE_INVALID));
+					if (uiBufferPosition >= uiNBArc) throw(CException(DECLARATION_LIGNE_COLONNE_INVALID));
 					
 					/* Etape 2 : Récupération de la valeur et stockage sur la première ligne*/
 					piBuffer = FICRecup_Ligne_Argument(pcLine, ppcTestBaliseArc, 2);	// récupération
@@ -190,7 +190,7 @@ CFichier::CFichier(const char * cAdresse)
 					/* Etape 3 : Test de l'existence des sommets*/
 					iBuffer > -1 && FICSommet_Existe_T_Il(iSommet, piListeSommet,uiFICNBSommet) > -1 ?
 						uiPositionDepart = (unsigned int) iBuffer:
-						throw(*new CException(DECLARATION_SOMMET_NEXISTE_PAS));
+						throw(CException(DECLARATION_SOMMET_NEXISTE_PAS));
 
 					/* Etape 4 : Stockage */
 					ppSTOFICStockage[uiPositionDepart]->STOAjouter_Arc(iSommet);
@@ -241,7 +241,7 @@ int * CFichier::FICRecup_Ligne_Argument(char * pcLigne, const char ** ppcBaliseA
 	// Erreur : Allocation
 	if (piResultat == nullptr)
 	{
-		throw(*new CException(ERREUR_REALLOC));
+		throw(CException(ERREUR_REALLOC));
 	}
 	
 	/*
